@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.guigeek.vins"
+      android:installLocation="auto" android:versionName="3.2.2" android:versionCode="34">
+    <uses-sdk android:targetSdkVersion="12" android:minSdkVersion="12"></uses-sdk>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <supports-screens android:normalScreens="true" android:anyDensity="true" android:resizeable="false" android:smallScreens="true" android:largeScreens="true" android:xlargeScreens="true"/>
+    
+    
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:allowClearUserData="true" android:testOnly="false" android:allowBackup="false" android:debuggable="false" android:theme="@style/Wines">
+        <activity android:label="@string/app_name" android:name="com.devilopers.guigeek.vins.TheWinesApp">
+        	<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:windowSoftInputMode="stateHidden" android:name="com.devilopers.guigeek.vins.AddScreen"></activity>
+        <activity android:windowSoftInputMode="stateHidden" android:name="com.devilopers.guigeek.vins.SearchScreen"></activity>
+        <activity android:name="com.devilopers.guigeek.vins.WineListView"></activity>
+        <activity android:windowSoftInputMode="stateHidden" android:name="com.devilopers.guigeek.vins.EditScreen"></activity>
+        <activity android:name="com.devilopers.guigeek.vins.DisplayScreen"></activity>
+        <activity android:name="com.devilopers.guigeek.vins.ImportScreen"/>
+        
+        
+        <activity android:name="com.devilopers.guigeek.vins.FilePicker"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter >
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.devilopers.guigeek.vins.PreferencesManager"></activity>
+        <activity android:name="com.devilopers.guigeek.vins.SectionScreen"></activity>
+        <activity android:name="com.devilopers.guigeek.vins.CompartmentScreen"></activity>
+
+    </application>
+</manifest>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" >
+	    
+	    <ImageView android:src="@drawable/background" android:scaleType="centerCrop" android:layout_width="fill_parent" android:layout_height="fill_parent"/>
+    
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" 
+    android:gravity="center" android:layout_centerInParent="true">
+		    
+		    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center">
+			    <Button
+					android:id="@+id/mainmenu_add"
+					android:layout_margin="10dp"
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:background="@drawable/add_selector"
+				/>
+			    
+				<Button
+					android:id="@+id/mainmenu_search"
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:layout_margin="10dp"
+					android:background="@drawable/search_selector"
+				/>
+			</LinearLayout>
+			
+		    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center">
+				<Button
+					android:id="@+id/mainmenu_list"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="10dp"
+					android:background="@drawable/list_selector"
+				/>
+				<Button
+					android:id="@+id/mainmenu_stock"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="10dp"
+					android:background="@drawable/cellar_selector"
+				/>
+			</LinearLayout>
+			
+	</LinearLayout>
+	</RelativeLayout>

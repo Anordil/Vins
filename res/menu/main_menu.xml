@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_prefs"
+        android:icon="@drawable/ic_action_pref"
+        android:title="@string/settings"
+    />
+    
+    <item
+        android:id="@+id/menu_export"
+        android:icon="@drawable/ic_action_export"
+        android:title="@string/exporter"
+    />
+    
+    <item
+        android:id="@+id/menu_import"
+        android:icon="@drawable/ic_action_import"
+        android:title="@string/importer"
+    />
+
+</menu>

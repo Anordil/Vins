@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    
+
+    <style name="Wines.Button" parent="@android:style/Widget.Button">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Wines.EditText" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="Wines.TextView" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">16dp</item>
+        
+        <item name="android:shadowColor">#FFFFFF</item>
+	    <item name="android:shadowRadius">0.1</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">-1</item>
+    </style>
+    
+    <style name="Wines.TextViewWithBg" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:background">@drawable/border</item>
+    </style>
+    
+    <style name="Wines.CheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:textColor">#000000</item>
+        <item name="android:shadowColor">#FFFFFF</item>
+	    <item name="android:shadowRadius">0.1</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">-1</item>
+    </style>
+    
+</resources>

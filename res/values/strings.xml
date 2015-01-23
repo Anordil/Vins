@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wines</string>
+    <string name="search">Search</string>
+    <string name="ajouter">Add</string>
+    <string name="view_list">Wine list</string>
+    <string name="nom">Name</string>
+    <string name="appellation">Appellation</string>
+    <string name="cepage">Grape Variety(ies)</string>
+    <string name="prix">Price</string>
+    <string name="millesime">Vintage</string>
+    <string name="accords">Best served with</string>
+    <string name="description">Description</string>
+    <string name="stock">bt.</string>
+    <string name="stockSuffix"> bottle(s) owned</string>
+    <string name="bottles"> bottle(s)</string>
+    <string name="hint_stock">Qty owned</string>
+    <string name="hint_stock_search">Owned bottles</string>
+    <string name="sortCriteria">Sort by:</string>
+    <string name="lower">&lt;</string>
+    <string name="greater">&gt;</string>
+    <string name="equals">=</string>
+    <string name="mandatory_field_erorr">Please fill in this field</string>
+    <string name="invalid_date_format_erorr">Please enter a 4-digit year, or leave this field empty</string>
+    <string name="no_result_message">No match found !</string>
+    <string name="wine_added_message">New wine added.</string>
+    <string name="wine_added_error">Error: could not add this wine.</string>
+    <string name="editWine">Update</string>
+    <string name="editDone">Done</string>
+    <string name="wine_updated_error">Update failed.</string>
+    <string name="wine_updated_message">Update successful.</string>
+    <string name="open_edit_error">An error occurred while editing this wine.</string>
+    <string name="deleteWine">Delete</string>
+    <string name="wine_delete_success">Delete completed.</string>
+    <string name="wine_delete_error">Delete failed !</string>
+    <string name="confirm_delete_message">Delete this wine ?</string>
+    <string name="confirm_drink_message">Drink this wine ? One bottle will be removed from your stock.</string>
+    <string name="confirm_delete_yes">Yes</string>
+    <string name="confirm_delete_no">No</string>
+    <string name="takePicture">Take a picture</string>
+    <string name="no_wine_in_db">You haven\'t added any wine to your database yet.</string>
+    <string name="no_wine_in_stock">Your wine cave is empty.</string>
+    <string name="my_cave">My wine cave</string>
+    <string name="x_matches">matches found.</string>
+    <string name="no_vintage">No vintage</string>
+    
+    <string name="unexpected_error">An unexpected error occurred.</string>
+    
+    <string name="classification">Classification</string>
+    <string name="cave_mgt">Cave management</string>
+    <string name="assessment">Assessments</string>
+    
+    <string name="colour_prompt">Please select a wine type</string>
+    <string-array name="colour_array">
+        <item>Red</item>
+        <item>White</item>
+        <item>Rosé</item>
+        <item>Yellow</item>
+    </string-array>
+    
+    <string-array name="sign_array">
+        <item>&lt;</item>
+        <item>=</item>
+        <item>></item>
+    </string-array>
+    
+    <string-array name="sort_array">
+        <item>Name</item>
+        <item>Appellation</item>
+        <item>Vintage</item>
+        <item>Color</item>
+        <item>Score</item>
+        <item>Quantity</item>
+    </string-array>
+    
+    <string name="colour_red">Red</string>
+    <string name="colour_rose">Rosé</string>
+    <string name="colour_white">White</string>
+    <string name="colour_yellow">Yellow</string>
+    
+    <string name="point_of_sale">Point of sale</string>
+    <string name="aging_potential">Aging potential</string>
+    <string name="years">year(s)</string>
+    
+    <color name="color_white">#FFF</color>
+    
+    <string name="importer">Import</string>
+    <string name="exporter">Export</string>
+    <string name="confirm_export_message">Would you like to export your wines ? This will overwrite the previous export file.</string>
+    <string name="filename">wineList.ser</string>
+    <string name="export_error">Export failed !</string>
+    <string name="export_success">Successfully exported wine list to </string>
+    <string name="import_error">The selected file can\'t be imported.</string>
+    
+    <string name="out_of">out of</string>
+    <string name="were_added">wines have successfully been added to your database.</string>
+    <string name="already_exists_error">Insert failed: a wine with the same name, appellation, colour and vintage already exists.</string>
+    <string name="no_items_in_wrapper">Couldn\'t retrieve any wine from the selected file</string>
+    <string name="picture_folder">Winotes_pictures</string>
+    <string name="no_camera">No camera found.</string>
+    <string name="no_camera_app">No camera application found.</string>
+    <string name="picture_error">No picture was taken.</string>
+    <string name="picture_ok">Picture successfully saved.</string>
+    <string name="loadPicture">Load picture</string>
+    
+    <string name="home">Home</string>
+    <string name="drink">Drink one</string>
+    <string name="drink_ok">One such bottle was removed from your cellar.</string>
+    <string name="drink_not_enough">You don\'t have this wine in stock.</string>
+    <string name="display">Display</string>
+    
+    <string name="hide_or_show">Hide or show fields</string>
+    <string name="hs_picture">Picture management</string>
+    <string name="hs_aging">Aging potential</string>
+    <string name="hs_stock">Stock management</string>
+    <string name="hs_price">Price and retail place</string>
+    <string name="hs_variety">Grape varieties</string>
+    <string name="hs_assessments">Wine assessments</string>
+    <string name="hs_best_with">Best served with</string>
+    <string name="settings">Settings</string>
+    
+    <string name="import_title">Import in progress...</string>
+    
+    <string name="addSectionLabel">Add section:</string>
+    <string name="sections">Sections</string>
+    <string name="addCompartmentLabel">Add. compartment:</string>
+    <string name="section_already_exists">A section with this name already exists</string>
+    <string name="compartment_already_exists">A compartment with this name already exists for this section</string>
+    <string name="select_section">Pick a section in your cellar</string>
+    <string name="select_compartment">Pick a compartment within this section</string>
+    <string name="no_location">(Not located)</string>
+    <string name="ok">Ok</string>
+    <string name="update_dialog_location">Hello There! \n\nYou can now locate wines in your cellar by breaking it down into sections (e.g. \'Left wall\'). Sections are broken into compartments (e.g. \'Top shelf\'). Hope this helps!</string>
+</resources>
