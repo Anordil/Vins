@@ -1,6 +1,12 @@
 package com.devilopers.guigeek.vins;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 
 public class Vin implements Serializable, Comparable<Vin> {
@@ -13,7 +19,7 @@ public class Vin implements Serializable, Comparable<Vin> {
 	private int _millesime, _note, _agingPotential=0, _stock = 0;
 	private int _id, _location = 0;
 	private double _price=0;
-	private byte[] image;
+	
 	
 	
 	public final static int SORT_NAME = 	0;
@@ -54,6 +60,7 @@ public class Vin implements Serializable, Comparable<Vin> {
 		setLocation(loca);
 	}
 	
+
 
 	public void setNom(String _nom) {
 		this._name = _nom;
@@ -272,5 +279,6 @@ public class Vin implements Serializable, Comparable<Vin> {
   public void setLocation(int iLoc) {
     _location = iLoc;
   }
+
 
 }

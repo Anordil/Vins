@@ -121,23 +121,15 @@ public class TheWinesApp extends Activity implements OnClickListener {
   }
 
   private void doExport() {
-    WineVectorSerializer wrapper = new WineVectorSerializer(true);
-    FileOutputStream fos = null;
-    ObjectOutputStream out = null;
+	  WineVectorSerializer wrapper = new WineVectorSerializer(true);
 
-    File rootFolder = Environment.getExternalStorageDirectory();
-    File filename = new File(rootFolder, getResources().getString(R.string.filename));
-
-    try {
-      fos = new FileOutputStream(filename);
-      out = new ObjectOutputStream(fos);
-      out.writeObject(wrapper);
-      out.close();
-      Toast.makeText(getApplicationContext(), getResources().getString(R.string.export_success)  + " " + filename.getAbsolutePath(), Toast.LENGTH_LONG).show();
-    } catch (IOException ex) {
-      ex.printStackTrace();
-      Toast.makeText(getApplicationContext(), getResources().getString(R.string.export_error), Toast.LENGTH_SHORT).show();
-    }
+	  try {
+		  String filename = wrapper.doExport(getResources().getString(R.string.filename));
+		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.export_success)  + " " + filename, Toast.LENGTH_LONG).show();
+	  } catch (IOException ex) {
+		  ex.printStackTrace();
+		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.export_error), Toast.LENGTH_SHORT).show();
+	  }
   }
 
 

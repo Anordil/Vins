@@ -1,5 +1,6 @@
 package com.devilopers.guigeek.vins;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -33,9 +34,19 @@ public class FilePicker extends FileChooserActivity {
       try {
         fis = new FileInputStream(path);
         in = new ObjectInputStream(fis);
-        wrapper = (WineVectorSerializer) in.readObject();
+        wrapper = new WineVectorSerializer(false);
+        
+        Vin aWine = (Vin) in.readObject();
+        while (aWine != null) {
+        	wrapper.getData().add(aWine);
+        	aWine =  (Vin) in.readObject();
+        }
         in.close();
-      } catch (Exception ex) {
+      } 
+      catch (EOFException ex) {
+    	  
+      }
+      catch (Exception ex) {
         Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
         this.finish();
       }

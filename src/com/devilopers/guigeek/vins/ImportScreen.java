@@ -143,7 +143,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 	private long tryToInsert(Vin vin) {
 		// Try to add this wine to the DB : it may fail
 		return DatabaseAdapter.instance().addEntry(vin.getNom(), vin.getAppellation(), vin.getColour(), vin.getCepage(), 
-				vin.getAccords(), vin.getDescription(), vin.getMillesime(), vin.getNote(), vin.getPrice(), vin.getPointOfSale(), vin.getAgingPotential(), vin.getStock(), null, 0);
+				vin.getAccords(), vin.getDescription(), vin.getMillesime(), vin.getNote(), vin.getPrice(), vin.getPointOfSale(), vin.getAgingPotential(), vin.getStock(), vin.getImagePath(), 0);
 	}
 
 }
