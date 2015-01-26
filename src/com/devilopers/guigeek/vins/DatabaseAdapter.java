@@ -37,6 +37,8 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
   public static final String COLOUR_WHITE = "blanc";
   public static final String COLOUR_ROSE = "rose";
   public static final String COLOUR_YELLOW = "jaune";
+  public static final String COLOUR_CHAMPAGNE = "champagne";
+  public static final String COLOUR_FORTIFIED = "fortified";
   public static final String COLOUR_ANY = "";
 
   private static final String TAG = "DBAdapter";
@@ -278,66 +280,35 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
       operatorForStock += "=";
     }
   
-    int checkedColours = 0;
+    // Filter by colour
     String colourWhere = "";
-    if (values.getAsBoolean(COLOUR_RED)) {checkedColours++;}
-    if (values.getAsBoolean(COLOUR_ROSE)) {checkedColours++;}
-    if (values.getAsBoolean(COLOUR_YELLOW)) {checkedColours++;}
-    if (values.getAsBoolean(COLOUR_WHITE)) {checkedColours++;}
-  
-    switch (checkedColours) {
-    case 0 : //get all colours
-      colourWhere = KEY_COLOUR + " LIKE '%'";
-      break;
-    case 1 : //get the selected colour
-      colourWhere = KEY_COLOUR + "=";
-      if (values.getAsBoolean(COLOUR_RED)) 	{colourWhere+="'" + COLOUR_RED + "'";}
-      if (values.getAsBoolean(COLOUR_ROSE)) 	{colourWhere+="'" + COLOUR_ROSE + "'";}
-      if (values.getAsBoolean(COLOUR_YELLOW)) {colourWhere+="'" + COLOUR_YELLOW + "'";}
-      if (values.getAsBoolean(COLOUR_WHITE)) 	{colourWhere+="'" + COLOUR_WHITE + "'";}
-      break;
-    case 2 : //get the 2 selected colours
-      colourWhere = KEY_COLOUR + "=";
-      boolean secondColour = false;
-      if (values.getAsBoolean(COLOUR_RED)) {
-        colourWhere += "'"+COLOUR_RED+"'" + " OR " + KEY_COLOUR + "=";
-        secondColour = true;
-      }
-      if (values.getAsBoolean(COLOUR_ROSE)) {
-        if (!secondColour) {
-          colourWhere += "'"+COLOUR_ROSE+"'" + " OR " + KEY_COLOUR + "=";
-          secondColour = true;
-        }
-        else {
-          colourWhere += "'"+COLOUR_ROSE+"'";
-          break;
-        }
-      }
-      if (values.getAsBoolean(COLOUR_YELLOW)) {
-        if (!secondColour) {
-          colourWhere += "'"+COLOUR_YELLOW+"'" + " OR " + KEY_COLOUR + "=";
-          secondColour = true;
-        }
-        else {
-          colourWhere += "'"+COLOUR_YELLOW+"'";
-          break;
-        }
-      }
-      if (values.getAsBoolean(COLOUR_WHITE)) {
-        colourWhere += "'"+COLOUR_WHITE+"'";
-      }
-      break;
-    case 3 : //get all but the unchecked colour
-      colourWhere = KEY_COLOUR + "!=";
-      if (!values.getAsBoolean(COLOUR_RED)) 		{colourWhere+="'"+COLOUR_RED+"'";}
-      if (!values.getAsBoolean(COLOUR_ROSE)) 		{colourWhere+="'"+COLOUR_ROSE+"'";}
-      if (!values.getAsBoolean(COLOUR_YELLOW)) 	{colourWhere+="'"+COLOUR_YELLOW+"'";}
-      if (!values.getAsBoolean(COLOUR_WHITE)) 	{colourWhere+="'"+COLOUR_WHITE+"'";}
-      break;
-    case 4 : //get all
-      colourWhere = KEY_COLOUR + " LIKE '%'";
-      break;
+    if (values.getAsBoolean(COLOUR_RED)) {
+    	colourWhere += KEY_COLOUR + "=" + "'" + COLOUR_RED + "'";
     }
+    if (values.getAsBoolean(COLOUR_ROSE)) {
+    	if (colourWhere.length() > 0) {colourWhere += " OR ";}
+    	colourWhere += KEY_COLOUR + "=" + "'" + COLOUR_ROSE + "'";
+    }
+    if (values.getAsBoolean(COLOUR_YELLOW)) {
+    	if (colourWhere.length() > 0) {colourWhere += " OR ";}
+    	colourWhere += KEY_COLOUR + "=" + "'" + COLOUR_YELLOW + "'";
+    }
+    if (values.getAsBoolean(COLOUR_WHITE)) {
+    	if (colourWhere.length() > 0) {colourWhere += " OR ";}
+    	colourWhere += KEY_COLOUR + "=" + "'" + COLOUR_WHITE + "'";
+    }
+    if (values.getAsBoolean(COLOUR_CHAMPAGNE)) {
+    	if (colourWhere.length() > 0) {colourWhere += " OR ";}
+    	colourWhere += KEY_COLOUR + "=" + "'" + COLOUR_CHAMPAGNE + "'";
+    }
+    if (values.getAsBoolean(COLOUR_FORTIFIED)) {
+    	if (colourWhere.length() > 0) {colourWhere += " OR ";}
+    	colourWhere += KEY_COLOUR + "=" + "'" + COLOUR_FORTIFIED + "'";
+    }
+    if (colourWhere.length() == 0) {
+    	colourWhere = KEY_COLOUR + " LIKE '%'";
+    }
+  
   
     String where = KEY_NOM + " LIKE " + selectionArgs[0] + " AND " + KEY_APPELLATION + " LIKE " + selectionArgs[1]
                    + " AND " + KEY_CEPAGE + " LIKE " + selectionArgs[2] + " AND " + KEY_ACCORDS + " LIKE " + selectionArgs[3] 

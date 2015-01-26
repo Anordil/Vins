@@ -110,7 +110,9 @@ public class SearchScreen extends Activity  implements OnClickListener {
 			red = 			((CheckBox)findViewById(R.id.checkbox_red)),
 			rose = 			((CheckBox)findViewById(R.id.checkbox_rose)),
 			white = 		((CheckBox)findViewById(R.id.checkbox_white)),
-			yellow = 		((CheckBox)findViewById(R.id.checkbox_yellow));
+			yellow = 		((CheckBox)findViewById(R.id.checkbox_yellow)),
+			champagne =     ((CheckBox)findViewById(R.id.checkbox_champagne)),
+			fortified =     ((CheckBox)findViewById(R.id.checkbox_fortified));
 		
 		ContentValues values = new ContentValues();
 		
@@ -148,6 +150,8 @@ public class SearchScreen extends Activity  implements OnClickListener {
 		values.put(DatabaseAdapter.COLOUR_ROSE, rose.isChecked());
 		values.put(DatabaseAdapter.COLOUR_WHITE, white.isChecked());
 		values.put(DatabaseAdapter.COLOUR_YELLOW, yellow.isChecked());
+		values.put(DatabaseAdapter.COLOUR_CHAMPAGNE, champagne.isChecked());
+		values.put(DatabaseAdapter.COLOUR_FORTIFIED, fortified.isChecked());
 		
 		return values;
 	}

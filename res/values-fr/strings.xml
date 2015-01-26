@@ -56,6 +56,8 @@
         <item>Blanc</item>
         <item>Rosé</item>
         <item>Jaune</item>
+        <item>Champagne</item>
+        <item>Vin doux</item>
     </string-array>
     
     <string-array name="sign_array">
@@ -78,6 +80,8 @@
     <string name="colour_rose">Rosé</string>
     <string name="colour_white">Blanc</string>
     <string name="colour_yellow">Jaune</string>
+    <string name="colour_champ">Champagne</string>
+    <string name="colour_fortified">Vin Doux</string>
     
     <string name="point_of_sale">Lieu d\'achat</string>
     <string name="aging_potential">Durée de garde</string>

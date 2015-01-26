@@ -115,6 +115,12 @@ public class EditScreen extends AddScreen {
 		if (colour.equals(DatabaseAdapter.COLOUR_YELLOW)) {
 			_spinner.setSelection(3);
 		}
+		if (colour.equals(DatabaseAdapter.COLOUR_CHAMPAGNE)) {
+			_spinner.setSelection(4);
+		}
+		if (colour.equals(DatabaseAdapter.COLOUR_FORTIFIED)) {
+			_spinner.setSelection(5);
+		}
 		
 		// Image
 		String imagePath = vin.getImagePath();
@@ -282,6 +288,12 @@ public class EditScreen extends AddScreen {
 			break;
 		case 3:
 			colour=DatabaseAdapter.COLOUR_YELLOW;
+			break;
+		case 4:
+			colour=DatabaseAdapter.COLOUR_CHAMPAGNE;
+			break;
+		case 5:
+			colour=DatabaseAdapter.COLOUR_FORTIFIED;
 			break;
 		}
 		

@@ -255,6 +255,12 @@ public class AddScreen extends Activity implements OnClickListener {
 		case 3:
 			colour=DatabaseAdapter.COLOUR_YELLOW;
 			break;
+		case 4:
+			colour=DatabaseAdapter.COLOUR_CHAMPAGNE;
+			break;
+		case 5:
+			colour=DatabaseAdapter.COLOUR_FORTIFIED;
+			break;
 		}
 		
 		// Set vintage to 0 if it hasn't been filled in

@@ -56,6 +56,8 @@
         <item>White</item>
         <item>Rosé</item>
         <item>Yellow</item>
+        <item>Champagne</item>
+        <item>Fortified</item>
     </string-array>
     
     <string-array name="sign_array">
@@ -78,6 +80,8 @@
     <string name="colour_rose">Rosé</string>
     <string name="colour_white">White</string>
     <string name="colour_yellow">Yellow</string>
+    <string name="colour_champ">Champagne</string>
+    <string name="colour_fortified">Fortified</string>
     
     <string name="point_of_sale">Point of sale</string>
     <string name="aging_potential">Aging potential</string>

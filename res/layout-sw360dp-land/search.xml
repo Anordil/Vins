@@ -98,6 +98,15 @@
                             android:checked="true"
                             android:text="@string/colour_white"
                             android:textSize="15dp" />
+                        
+                        <CheckBox
+                            android:id="@+id/checkbox_rose"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/colour_rose"
+                            android:textSize="15dp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -171,21 +180,30 @@
                         android:weightSum="3" >
 
                         <CheckBox
-                            android:id="@+id/checkbox_rose"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="true"
-                            android:text="@string/colour_rose"
-                            android:textSize="15dp" />
-
-                        <CheckBox
                             android:id="@+id/checkbox_yellow"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:checked="true"
                             android:text="@string/colour_yellow"
+                            android:textSize="15dp" />
+                        
+                        <CheckBox
+                            android:id="@+id/checkbox_champagne"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/colour_champ"
+                            android:textSize="15dp" />
+                        
+                        <CheckBox
+                            android:id="@+id/checkbox_fortified"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/colour_fortified"
                             android:textSize="15dp" />
                     </LinearLayout>
                 </LinearLayout>
