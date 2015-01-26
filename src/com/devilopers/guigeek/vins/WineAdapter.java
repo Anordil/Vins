@@ -68,6 +68,12 @@ public class WineAdapter extends ArrayAdapter<Vin> {
 	        	if (v.getColour().equals(DatabaseAdapter.COLOUR_YELLOW)) {
 	        		icon.setImageDrawable(this.getContext().getResources().getDrawable(R.drawable.glass_jaune));
 	        	}
+	        	if (v.getColour().equals(DatabaseAdapter.COLOUR_CHAMPAGNE)) {
+	        		icon.setImageDrawable(this.getContext().getResources().getDrawable(R.drawable.glass_champagne));
+	        	}
+	        	if (v.getColour().equals(DatabaseAdapter.COLOUR_FORTIFIED)) {
+	        		icon.setImageDrawable(this.getContext().getResources().getDrawable(R.drawable.glass_forti));
+	        	}
 	        }
         }
         return convertView;

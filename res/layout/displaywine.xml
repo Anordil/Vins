@@ -141,6 +141,28 @@
                     android:paddingTop="10dp"
                     android:progressDrawable="@drawable/yellow_rating_bar_glasses"
                     android:stepSize="1" />
+                
+                <RatingBar
+                    android:id="@+id/input_note_champ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="true"
+                    android:numStars="10"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:progressDrawable="@drawable/champ_rating_bar_glasses"
+                    android:stepSize="1" />
+                
+                <RatingBar
+                    android:id="@+id/input_note_forti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="true"
+                    android:numStars="10"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:progressDrawable="@drawable/forti_rating_bar_glasses"
+                    android:stepSize="1" />
 
                 <LinearLayout
                     android:id="@+id/panelGarde"

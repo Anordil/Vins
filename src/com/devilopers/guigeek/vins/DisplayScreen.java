@@ -73,6 +73,8 @@ public class DisplayScreen extends Activity {
 			viewNoteRed  			= ((RatingBar)findViewById(R.id.input_note_red)),
 			viewNoteRose  			= ((RatingBar)findViewById(R.id.input_note_rose)),
 			viewNoteWhite  			= ((RatingBar)findViewById(R.id.input_note_white)),
+			viewNoteChamp  			= ((RatingBar)findViewById(R.id.input_note_champ)),
+			viewNoteforti  			= ((RatingBar)findViewById(R.id.input_note_forti)),
 			viewNoteYellow  		= ((RatingBar)findViewById(R.id.input_note_yellow));
 		
 		LinearLayout 
@@ -119,6 +121,9 @@ public class DisplayScreen extends Activity {
 		viewNoteRose.setVisibility(View.GONE);
 		viewNoteWhite.setVisibility(View.GONE);
 		viewNoteYellow.setVisibility(View.GONE);
+		viewNoteforti.setVisibility(View.GONE);
+		viewNoteChamp.setVisibility(View.GONE);
+		
 		//Hide the colour
 		viewColour.setVisibility(View.GONE);
 		
@@ -138,6 +143,14 @@ public class DisplayScreen extends Activity {
 		if (colour.equals(DatabaseAdapter.COLOUR_YELLOW)) {
 			viewNoteYellow.setVisibility(View.VISIBLE);
 			_displayedBar = viewNoteYellow;
+		}
+		if (colour.equals(DatabaseAdapter.COLOUR_CHAMPAGNE)) {
+			viewNoteChamp.setVisibility(View.VISIBLE);
+			_displayedBar = viewNoteChamp;
+		}
+		if (colour.equals(DatabaseAdapter.COLOUR_FORTIFIED)) {
+			viewNoteforti.setVisibility(View.VISIBLE);
+			_displayedBar = viewNoteforti;
 		}
 		_displayedBar.setRating(vin.getNote());
 		
