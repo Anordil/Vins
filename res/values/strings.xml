@@ -71,6 +71,7 @@
         <item>Color</item>
         <item>Score</item>
         <item>Quantity</item>
+        <item>Location</item>
     </string-array>
     
     <string name="colour_red">Red</string>

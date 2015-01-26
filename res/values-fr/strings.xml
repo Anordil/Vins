@@ -71,6 +71,7 @@
         <item>Couleur</item>
         <item>Note</item>
         <item>Quantité</item>
+        <item>Emplacement</item>
     </string-array>
     
     <string name="colour_red">Rouge</string>

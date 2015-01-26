@@ -28,6 +28,7 @@ public class Vin implements Serializable, Comparable<Vin> {
 	public final static int SORT_COLOR = 	3;
 	public final static int SORT_MARK = 	4;
 	public final static int SORT_STOCK = 	5;
+	public final static int SORT_LOCATION = 6;
 	public static int sortAccordingTo = SORT_NAME;
 	
 	
@@ -241,6 +242,15 @@ public class Vin implements Serializable, Comparable<Vin> {
 				result = this._millesime - other._millesime;
 			}
 			return result;
+			
+		case SORT_LOCATION:
+			String nameThis = DatabaseAdapter.instance().getCompartmentLongName(this.getLocation());
+			String nameOther = DatabaseAdapter.instance().getCompartmentLongName(other.getLocation());
+			result = nameThis.compareToIgnoreCase(nameOther);
+			if (result == 0) {
+				result = this._millesime - other._millesime;
+			}
+			return result;
 		
 		// Default: name then year
 		default:
@@ -267,6 +277,9 @@ public class Vin implements Serializable, Comparable<Vin> {
   
       case SORT_YEAR:
         return String.valueOf(_millesime).contains(filter);
+        
+      case SORT_LOCATION:
+    	  return DatabaseAdapter.instance().getCompartmentLongName(this.getLocation()).toUpperCase().contains(filter.toUpperCase());
   
       default:
         return true;

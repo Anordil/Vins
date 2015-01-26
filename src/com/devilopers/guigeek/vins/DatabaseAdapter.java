@@ -586,6 +586,10 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
   public String getCompartmentLongName(int compId) {
     SQLiteDatabase db = getWritableDatabase();
     String result = "";
+    
+    if (compId <= 0) {
+    	return "";
+    }
 
     // Get the compartment
     String where = KEY_ID + "==" + compId;

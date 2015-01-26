@@ -30,14 +30,27 @@ public class WineAdapter extends ArrayAdapter<Vin> {
         if (v != null) {
 	        TextView desc = (TextView) convertView.findViewById(R.id.listItemDescription);
 	        TextView note = (TextView) convertView.findViewById(R.id.listItemNote);
+	        TextView stock = (TextView) convertView.findViewById(R.id.listItemStock);
+	        TextView location = (TextView) convertView.findViewById(R.id.listItemLocation);
 	        ImageView icon = (ImageView) convertView.findViewById(R.id.listItemImage);
 	        
 	        // Don't display empty vintages
 	        String vintage = v.getMillesime() == 0 ? "" : "" + v.getMillesime();
 	        
 	        if (desc != null) {
-	        	desc.setText(v.getNom() + " " + vintage + " (" + v.getAppellation() + ") : " 
-	        			+ v.getStock() + " " + TheWinesApp.getContext().getResources().getString(R.string.bottles));
+	        	desc.setText(v.getNom() + " " + vintage + " (" + v.getAppellation() + ")" 
+//	        			+ v.getStock() + " " + TheWinesApp.getContext().getResources().getString(R.string.bottles)
+	        			);
+	        }
+	        if (stock != null) {
+	        	stock.setText("" + v.getStock());
+	        }
+	        if (location != null && v.getLocation() > 0) {
+	        	location.setVisibility(View.VISIBLE);
+	        	location.setText(DatabaseAdapter.instance().getCompartmentLongName(v.getLocation()));
+	        }
+	        else {
+	        	location.setVisibility(View.GONE);
 	        }
 	        if(note != null){
 	        	note.setText("" + v.getNote());

@@ -401,6 +401,10 @@ public class WineListView extends ListActivity {
 					Vin.sortAccordingTo = Vin.SORT_STOCK;
 					filterText.setEnabled(false);
 					break;
+				case Vin.SORT_LOCATION:
+					Vin.sortAccordingTo = Vin.SORT_LOCATION;
+					filterText.setEnabled(true);
+					break;
 				default:
 					Vin.sortAccordingTo = Vin.SORT_NAME;
 					filterText.setEnabled(true);
