@@ -5,12 +5,8 @@
         android:id="@+id/menu_delete"
         android:icon="@drawable/ic_action_discard"
         android:title="@string/deleteWine"
+        android:showAsAction="ifRoom" 
     />
     
-    <item
-        android:id="@+id/menu_home"
-        android:icon="@drawable/ic_nav_home"
-        android:title="@string/home"
-    />
 
 </menu>

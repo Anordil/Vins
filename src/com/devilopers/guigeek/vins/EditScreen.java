@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Currency;
 import java.util.Locale;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,6 +28,10 @@ public class EditScreen extends AddScreen {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		ActionBar actionBar = getActionBar();
+	    actionBar.setDisplayHomeAsUpEnabled(true);
+
 		
 		tvClassification.setOnClickListener(this);
     tvCellar.setOnClickListener(this);
@@ -352,7 +357,7 @@ public class EditScreen extends AddScreen {
     if (item.getItemId() == R.id.menu_delete) {
       handleDelete();
     }
-    else if (item.getItemId() == R.id.menu_home) {
+    else if (item.getItemId() == android.R.id.home) {
       setResult(Constants.RETURN_HOME);
       finish();
     }

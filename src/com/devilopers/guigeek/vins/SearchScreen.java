@@ -2,10 +2,12 @@ package com.devilopers.guigeek.vins;
 
 import java.util.Vector;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -24,6 +26,9 @@ public class SearchScreen extends Activity  implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search);
+        
+        ActionBar actionBar = getActionBar();
+	    actionBar.setDisplayHomeAsUpEnabled(true);
         
         Button searchButton = ( (Button)findViewById(R.id.searchButton) );
         searchButton.setOnClickListener(this);
@@ -175,4 +180,12 @@ public class SearchScreen extends Activity  implements OnClickListener {
 			Toast.makeText(getApplicationContext(), getResources().getString(R.string.no_result_message), Toast.LENGTH_SHORT).show();
 		}
 	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == android.R.id.home) {
+			finish();
+		}
+		return true;
+	}
+	
 }

@@ -5,18 +5,21 @@
         android:id="@+id/menu_prefs"
         android:icon="@drawable/ic_action_pref"
         android:title="@string/settings"
+        android:showAsAction="ifRoom" 
     />
     
     <item
         android:id="@+id/menu_export"
         android:icon="@drawable/ic_action_export"
         android:title="@string/exporter"
+        android:showAsAction="ifRoom" 
     />
     
     <item
         android:id="@+id/menu_import"
         android:icon="@drawable/ic_action_import"
         android:title="@string/importer"
+        android:showAsAction="ifRoom" 
     />
 
 </menu>

@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Vector;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -46,6 +47,9 @@ public class WineListView extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_activity);
+		
+		ActionBar actionBar = getActionBar();
+	    actionBar.setDisplayHomeAsUpEnabled(true);
 		
 		filterText = (EditText)findViewById(R.id.filterText);
 		filterText.setOnEditorActionListener(new FilterListener());
@@ -230,7 +234,7 @@ public class WineListView extends ListActivity {
 	    startActivity(intent);
 	    finish();
 	  }
-	  else if (item.getItemId() == R.id.menu_home) {
+	  else if (item.getItemId() == android.R.id.home) {
 	    finish();
 	  }
 	  return true;
@@ -478,4 +482,5 @@ public class WineListView extends ListActivity {
     
     setListAdapter(new WineAdapter(this, R.layout.list_wine, _wineListFiltered));
   }
+  
 }

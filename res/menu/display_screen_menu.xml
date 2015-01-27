@@ -5,24 +5,22 @@
         android:id="@+id/menu_edit"
         android:icon="@drawable/ic_action_edit"
         android:title="@string/editWine"
+        android:showAsAction="ifRoom" 
     />
     
     <item
         android:id="@+id/menu_delete"
         android:icon="@drawable/ic_action_discard"
         android:title="@string/deleteWine"
+        android:showAsAction="ifRoom" 
     />
     
     <item
         android:id="@+id/menu_drink"
         android:icon="@drawable/ic_action_drink"
         android:title="@string/drink"
+        android:showAsAction="ifRoom" 
     />
     
-    <item
-        android:id="@+id/menu_home"
-        android:icon="@drawable/ic_nav_home"
-        android:title="@string/home"
-    />
 
 </menu>
