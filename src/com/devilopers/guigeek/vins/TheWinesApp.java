@@ -119,12 +119,12 @@ public class TheWinesApp extends Activity implements OnClickListener {
   public static Context getContext() {
     return context;
   }
-
+  
   private void doExport() {
 	  WineVectorSerializer wrapper = new WineVectorSerializer(true);
 
 	  try {
-		  String filename = wrapper.doExport(getResources().getString(R.string.filename));
+		  String filename = wrapper.doExport(getResources().getString(R.string.filename), TheWinesApp.this);
 		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.export_success)  + " " + filename, Toast.LENGTH_LONG).show();
 	  } catch (IOException ex) {
 		  ex.printStackTrace();

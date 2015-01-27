@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 
 public class Vin implements Serializable, Comparable<Vin> {
@@ -19,6 +20,7 @@ public class Vin implements Serializable, Comparable<Vin> {
 	private int _millesime, _note, _agingPotential=0, _stock = 0;
 	private int _id, _location = 0;
 	private double _price=0;
+	private byte[] _imageBytes = null;
 	
 	
 	
@@ -292,6 +294,48 @@ public class Vin implements Serializable, Comparable<Vin> {
   public void setLocation(int iLoc) {
     _location = iLoc;
   }
+  
+  
+  // Read the image from the SD card
+  public void loadImage() {
+	  set_imageBytes(null);
+	  if (_imagePath != null && _imagePath.length() > 0) {
+		  
+		  File aImageFile = new File(_imagePath);
+		  
+		  // Just to get the image size
+		  BitmapFactory.Options options = new BitmapFactory.Options();
+		  options.inJustDecodeBounds = true;
+		  BitmapFactory.decodeFile(aImageFile.getAbsolutePath(), options);
+		  
+		  // No more than 200px
+		  int largestEdge = Math.max(options.outHeight, options.outWidth);
+		  int ratio = largestEdge/10;
+		  
+		  options.inJustDecodeBounds = false;
+		  options.inSampleSize = ratio;
+		  Bitmap aBitmap = BitmapFactory.decodeFile(aImageFile.getAbsolutePath(), options);
+		  if (aBitmap != null) {
+			  Log.i("Serialize", "There is an image to serialize");
+			  ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			  aBitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
+//			  set_imageBytes(stream.toByteArray());
+		  }
+	  }
+  }
+  
+  // Delete the image to free memory
+  public void freeImage() {
+	  set_imageBytes(null);
+  }
+
+public byte[] get_imageBytes() {
+	return _imageBytes;
+}
+
+public void set_imageBytes(byte[] _imageBytes) {
+	this._imageBytes = _imageBytes;
+}
 
 
 }

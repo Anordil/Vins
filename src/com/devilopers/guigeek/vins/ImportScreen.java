@@ -21,17 +21,17 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 	ListView theList;
 	String[] wineLabels;
 	WineVectorSerializer wrapper;
-	
+
 	private ProgressDialog mProgress;
 	private int successfullyAdded = 0, totalItems = 0;
 
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
+
 		setContentView(R.layout.import_screen);
 		super.onCreate(savedInstanceState);
-		
+
 		Bundle bundle = this.getIntent().getExtras();
 		if (bundle == null) {
 			Toast.makeText(getApplicationContext(), "Bundle null", Toast.LENGTH_SHORT).show();
@@ -48,7 +48,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 				validateButton.setOnClickListener(this);
 				checkAll = (CheckBox) findViewById(R.id.checkAll);
 				checkAll.setOnClickListener(this);
-				
+
 				wineLabels = new String[wrapper.getData().size()];
 				int i = 0;
 				String colour;
@@ -62,7 +62,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 				}
 				//Toast.makeText(getApplicationContext(), "Nbr d'objets: " + wrapper.getList().size(), Toast.LENGTH_SHORT).show();
 				setListAdapter(new ArrayAdapter<String>(this, R.layout.import_list, wineLabels));
-				
+
 				theList = getListView();
 				theList.setItemsCanFocus(false);
 				theList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -71,74 +71,74 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 	}
 
 
-	
+
 	@Override
 	public void onClick(View v) {
 		// The import button is clicked -> try to import the selected wines
 		if (v == validateButton) {
-		  
-      final Handler handle = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-          super.handleMessage(msg);
-          doProgress();
-        }
-      };
-		  
-		  Thread importThres = new Thread(new Runnable() {
-        
-        public void run() {
-          
-          for (int i = 0; i < theList.getCount(); ++i) {
-            if (theList.isItemChecked(i)) {
-              // Error cases are -1 and -2 so anything higher means the INSERT was successful
-              handle.sendMessage(handle.obtainMessage());
-              if (tryToInsert(wrapper.getData().get(i)) > -1) {
-                System.out.println("Try to insert wrapper's item " + i);
-                successfullyAdded++;
-              }
-            }
-          }
-        }
-      });
-		  
-		  totalItems = 0;
-		  successfullyAdded = 0;
-	    for (int i = 0; i < theList.getCount(); ++i) {
-	      if (theList.isItemChecked(i)) {
-	        totalItems++;
-	      }
-	    }
-	    
-	    mProgress = new ProgressDialog(ImportScreen.this);
-	    mProgress.setMax(totalItems);
-		  mProgress.setTitle(getResources().getString(R.string.import_title));
-		  mProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-		  
-		  importThres.start();
-		  mProgress.show();
+
+			final Handler handle = new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
+					super.handleMessage(msg);
+					doProgress();
+				}
+			};
+
+			Thread importThres = new Thread(new Runnable() {
+
+				public void run() {
+
+					for (int i = 0; i < theList.getCount(); ++i) {
+						if (theList.isItemChecked(i)) {
+							// Error cases are -1 and -2 so anything higher means the INSERT was successful
+							handle.sendMessage(handle.obtainMessage());
+							if (tryToInsert(wrapper.getData().get(i)) > -1) {
+								System.out.println("Try to insert wrapper's item " + i);
+								successfullyAdded++;
+							}
+						}
+					}
+				}
+			});
+
+			totalItems = 0;
+			successfullyAdded = 0;
+			for (int i = 0; i < theList.getCount(); ++i) {
+				if (theList.isItemChecked(i)) {
+					totalItems++;
+				}
+			}
+
+			mProgress = new ProgressDialog(ImportScreen.this);
+			mProgress.setMax(totalItems);
+			mProgress.setTitle(getResources().getString(R.string.import_title));
+			mProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+
+			importThres.start();
+			mProgress.show();
 		}
-		
+
 		else if (v == checkAll) {
 			for (int i = 0; i < theList.getCount(); ++i) {
 				theList.setItemChecked(i, checkAll.isChecked());
 			}
 		}
 	}
-	
+
 	private void doProgress() {
-	  mProgress.incrementProgressBy(1);
-	  mProgress.setMessage(mProgress.getProgress() + "/" + mProgress.getMax());
-	  
-	  if (mProgress.getProgress() == mProgress.getMax()) {
-	    mProgress.dismiss();
-      Toast.makeText(getApplicationContext(), 
-          successfullyAdded + " " + getResources().getString(R.string.out_of) + " " + totalItems + " " + getResources().getString(R.string.were_added), 
-          Toast.LENGTH_SHORT).show();
-	  }
+		mProgress.incrementProgressBy(1);
+		mProgress.setMessage(mProgress.getProgress() + "/" + mProgress.getMax());
+
+		if (mProgress.getProgress() == mProgress.getMax()) {
+			mProgress.dismiss();
+			Toast.makeText(getApplicationContext(), 
+					successfullyAdded + " " + getResources().getString(R.string.out_of) + " " + totalItems + " " + getResources().getString(R.string.were_added), 
+					Toast.LENGTH_SHORT).show();
+		}
 	}
-	
-	
+
+
 
 	private long tryToInsert(Vin vin) {
 		// Try to add this wine to the DB : it may fail
