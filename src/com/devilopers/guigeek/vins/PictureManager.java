@@ -54,7 +54,7 @@ public class PictureManager {
     return f;
   }
 
-  private File createImageFile() {
+  public File createImageFile() {
     // Create the image folder if it does not exist
     File imagesFolder = new File(Environment.getExternalStorageDirectory(), mParent.getResources().getString(R.string.picture_folder));
     if (!imagesFolder.exists()) {
@@ -74,15 +74,16 @@ public class PictureManager {
   }
   
   public File browseToFile(File ioOldFile) {
-    // If an image already existed for this bottle, we'll override it
-    File f;
+    // Create a new file, as two wines may share the same file otherwise (after importing someone else's)
+/*  File f;
     if (ioOldFile != null && ioOldFile.exists()) {
       f = ioOldFile;
     }
     else {
       f = createImageFile();
     }
-
+*/	
+	File f = createImageFile();
     Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
     photoPickerIntent.setType("image/*");
     mParent.startActivityForResult(photoPickerIntent, Constants.REQUEST_BROWSE_PHOTO);   

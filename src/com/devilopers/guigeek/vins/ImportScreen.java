@@ -1,10 +1,18 @@
 package com.devilopers.guigeek.vins;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -92,11 +100,11 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 					for (int i = 0; i < theList.getCount(); ++i) {
 						if (theList.isItemChecked(i)) {
 							// Error cases are -1 and -2 so anything higher means the INSERT was successful
-							handle.sendMessage(handle.obtainMessage());
 							if (tryToInsert(wrapper.getData().get(i)) > -1) {
 								System.out.println("Try to insert wrapper's item " + i);
 								successfullyAdded++;
 							}
+							handle.sendMessage(handle.obtainMessage());
 						}
 					}
 				}
@@ -114,6 +122,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 			mProgress.setMax(totalItems);
 			mProgress.setTitle(getResources().getString(R.string.import_title));
 			mProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+			mProgress.setCancelable(false);
 
 			importThres.start();
 			mProgress.show();
@@ -142,8 +151,42 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 
 	private long tryToInsert(Vin vin) {
 		// Try to add this wine to the DB : it may fail
-		return DatabaseAdapter.instance().addEntry(vin.getNom(), vin.getAppellation(), vin.getColour(), vin.getCepage(), 
+//		if (vin.get_imageBytes() != null) {
+//			vin.setImagePath(null);
+//			createPicture(vin);
+//		}
+		long result =  DatabaseAdapter.instance().addEntry(vin.getNom(), vin.getAppellation(), vin.getColour(), vin.getCepage(), 
 				vin.getAccords(), vin.getDescription(), vin.getMillesime(), vin.getNote(), vin.getPrice(), vin.getPointOfSale(), vin.getAgingPotential(), vin.getStock(), vin.getImagePath(), 0);
+		return result;
+	}
+
+
+
+	private void createPicture(Vin vin) {
+		if (vin.get_imageBytes() != null) {
+			try {
+				PictureManager aPicMgr = new PictureManager(ImportScreen.this);
+				File aOutputFile = aPicMgr.createImageFile();
+				FileOutputStream aFOS = new FileOutputStream(aOutputFile);
+				
+				Bitmap aBmp = BitmapFactory.decodeByteArray(vin.get_imageBytes(), 0, vin.get_imageBytes().length);
+				aBmp.compress(Bitmap.CompressFormat.JPEG, 100, aFOS);
+				aFOS.close();
+				Log.e("Import", "Image saved to " + aOutputFile.getAbsolutePath());
+				vin.setImagePath(aOutputFile.getAbsolutePath());
+			} 
+			catch (FileNotFoundException e) {
+				Log.e("Import", "File not found");
+			}
+			catch (NullPointerException ex) {
+				Log.e("Import", "Image decoding failed");
+			} catch (IOException e) {
+				Log.e("Import", "IO ex");
+			}
+			finally {
+				vin.freeImage();
+			}
+		}
 	}
 
 }

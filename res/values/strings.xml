@@ -94,7 +94,7 @@
     <string name="confirm_export_message">Would you like to export your wines ? This will overwrite the previous export file.</string>
     <string name="filename">wineList.ser</string>
     <string name="export_error">Export failed !</string>
-    <string name="export_success">Successfully exported wine list to </string>
+    <string name="export_success">Successfully exported wine list to SD card</string>
     <string name="import_error">The selected file can\'t be imported.</string>
     
     <string name="out_of">out of</string>

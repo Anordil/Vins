@@ -94,7 +94,7 @@
     <string name="confirm_export_message">Exporter vos vins ? Cette action écrasera le fichier d\'export précédent.</string>
     <string name="filename">mesVins.ser</string>
     <string name="export_error">Echec de l\'export !</string>
-    <string name="export_success">Export réussi vers </string>
+    <string name="export_success">Export réussi vers la carte SD</string>
     <string name="import_error">Le fichier sélectionné ne peut pas être importé.</string>
     <string name="out_of">vins sur</string>
     <string name="were_added">ont été ajoutés à votre base de données.</string>

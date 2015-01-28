@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.guigeek.vins.R;
@@ -28,6 +29,7 @@ public class FilePicker extends FileChooserActivity {
     if (file != null) {
       // Get the path of the Selected File.
       final String path = file.getAbsolutePath();
+      Log.e("Import", "Trying to import " + path);
       WineVectorSerializer wrapper = null;
       FileInputStream fis = null;
       ObjectInputStream in = null;
@@ -44,10 +46,11 @@ public class FilePicker extends FileChooserActivity {
         in.close();
       } 
       catch (EOFException ex) {
-    	  
+    	  Log.e("Import", "Reached EOF");
       }
       catch (Exception ex) {
         Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
+        Log.e("Import", "Exception caught when picking");
         this.finish();
       }
 

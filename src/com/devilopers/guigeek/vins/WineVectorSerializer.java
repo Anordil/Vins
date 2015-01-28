@@ -23,6 +23,7 @@ public class WineVectorSerializer implements Serializable {
 
 	private static final long serialVersionUID = 12L;
 	private Vector<Vin> data;
+	private boolean exportError = false;
 
 	public WineVectorSerializer(Vector<Vin> inputData) {
 		data = new Vector<Vin>();
@@ -57,6 +58,7 @@ public class WineVectorSerializer implements Serializable {
 
 		File rootFolder = Environment.getExternalStorageDirectory();
 		final File filename = new File(rootFolder, iFileName);
+		exportError = false;
 		
 		// Handler
 		final Handler handle = new Handler() {
@@ -77,13 +79,26 @@ public class WineVectorSerializer implements Serializable {
 					final ObjectOutputStream out = new ObjectOutputStream(fos);
 
 					for (Vin vin: data) {
-						handle.sendMessage(handle.obtainMessage());
+						
 						try {
+//							vin.loadImage();
 							out.writeObject(vin);
+							out.flush();
+//							try {
+//								Thread.sleep(1000);
+//							}
+//							catch (Exception e) {}
 						} 
 						catch (IOException e) {
-							Log.e("Serialize", "Error exporting a wine");
+							Log.e("Serialize", "Error exporting " + vin.getNom() + " " + vin.getMillesime());
+							exportError = true;
+							handle.sendMessage(handle.obtainMessage());
+							break;
 						}
+						finally {
+							vin.freeImage();
+						}
+						handle.sendMessage(handle.obtainMessage());
 					}
 					out.close();
 				}
@@ -97,6 +112,7 @@ public class WineVectorSerializer implements Serializable {
 		mProgress = new ProgressDialog(theWinesApp);
 		mProgress.setMax(totalItems);
 		mProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		mProgress.setCancelable(false);
 
 		exportThread.start();
 		mProgress.show();
@@ -107,10 +123,15 @@ public class WineVectorSerializer implements Serializable {
 	private void doProgress() {
 		mProgress.incrementProgressBy(1);
 		mProgress.setMessage(mProgress.getProgress() + "/" + mProgress.getMax());
-
-		if (mProgress.getProgress() == mProgress.getMax()) {
+		if (exportError) {
 			mProgress.dismiss();
+			  Toast.makeText(TheWinesApp.getContext(), TheWinesApp.getContext().getResources().getString(R.string.export_error), Toast.LENGTH_LONG).show();
 		}
+		else if (mProgress.getProgress() == mProgress.getMax()) {
+			mProgress.dismiss();
+			  Toast.makeText(TheWinesApp.getContext(), TheWinesApp.getContext().getResources().getString(R.string.export_success), Toast.LENGTH_LONG).show();
+		}
+		
 	}
 
 }

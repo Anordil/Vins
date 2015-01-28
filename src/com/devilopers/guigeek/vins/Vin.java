@@ -308,9 +308,9 @@ public class Vin implements Serializable, Comparable<Vin> {
 		  options.inJustDecodeBounds = true;
 		  BitmapFactory.decodeFile(aImageFile.getAbsolutePath(), options);
 		  
-		  // No more than 200px
+		  // No more than 500px
 		  int largestEdge = Math.max(options.outHeight, options.outWidth);
-		  int ratio = largestEdge/10;
+		  int ratio = largestEdge/500;
 		  
 		  options.inJustDecodeBounds = false;
 		  options.inSampleSize = ratio;
@@ -318,8 +318,8 @@ public class Vin implements Serializable, Comparable<Vin> {
 		  if (aBitmap != null) {
 			  Log.i("Serialize", "There is an image to serialize");
 			  ByteArrayOutputStream stream = new ByteArrayOutputStream();
-			  aBitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
-//			  set_imageBytes(stream.toByteArray());
+			  aBitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream);
+			  set_imageBytes(stream.toByteArray());
 		  }
 	  }
   }
