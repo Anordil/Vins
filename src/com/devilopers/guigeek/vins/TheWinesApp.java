@@ -120,11 +120,17 @@ public class TheWinesApp extends Activity implements OnClickListener {
     return context;
   }
   
-  private void doExport() {
+  private void doExport(boolean bIncludePics) {
 	  WineVectorSerializer wrapper = new WineVectorSerializer(true);
+	  
+	  String filename = getResources().getString(R.string.filename);
+	  if (bIncludePics) {
+	    filename += "_img";
+	  }
+	  filename += ".ser";
 
 	  try {
-		  wrapper.doExport(getResources().getString(R.string.filename), TheWinesApp.this);
+		  wrapper.doExport(filename, bIncludePics, TheWinesApp.this);
 	  } catch (IOException ex) {
 		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.export_error), Toast.LENGTH_SHORT).show();
 	  }
@@ -154,10 +160,15 @@ public class TheWinesApp extends Activity implements OnClickListener {
       .setCancelable(false)
       .setPositiveButton(getResources().getString(R.string.confirm_delete_yes), new DialogInterface.OnClickListener() {
         public void onClick(DialogInterface dialog, int id) {
-          doExport();
+          doExport(true);
         }
       })
-      .setNegativeButton(getResources().getString(R.string.confirm_delete_no), new DialogInterface.OnClickListener() {
+      .setNeutralButton(getResources().getString(R.string.confirm_delete_no), new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {
+          doExport(false);
+        }
+      })
+      .setNegativeButton(getResources().getString(R.string.confirm_delete_cancel), new DialogInterface.OnClickListener() {
         public void onClick(DialogInterface dialog, int id) {
           dialog.cancel();
         }

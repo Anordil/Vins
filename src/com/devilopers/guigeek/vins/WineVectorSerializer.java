@@ -54,10 +54,11 @@ public class WineVectorSerializer implements Serializable {
 		}
 	}
 
-	public String doExport(String iFileName, TheWinesApp theWinesApp) throws IOException {
+	public String doExport(String iFileName, boolean bIncludePics, TheWinesApp theWinesApp) throws IOException {
 
 		File rootFolder = Environment.getExternalStorageDirectory();
-		final File filename = new File(rootFolder, iFileName);
+		final File filename = new File(rootFolder, iFileName).getAbsoluteFile();
+		final boolean includePics = bIncludePics;
 		exportError = false;
 		
 		// Handler
@@ -74,23 +75,30 @@ public class WineVectorSerializer implements Serializable {
 			public void run() {
 
 				try {
-					FileOutputStream fos = null;
-					fos = new FileOutputStream(filename);
-					final ObjectOutputStream out = new ObjectOutputStream(fos);
+					FileOutputStream fos =  new FileOutputStream(filename);
+					ObjectOutputStream out = new ObjectOutputStream(fos);
 
 					for (Vin vin: data) {
 						
 						try {
-//							vin.loadImage();
+						  
+						  if (includePics) {
+						    vin.loadImage();
+						  }
+						  else {
+						    vin.set_imageBytes(null);
+						  }
+							
 							out.writeObject(vin);
 							out.flush();
-//							try {
-//								Thread.sleep(1000);
-//							}
-//							catch (Exception e) {}
 						} 
 						catch (IOException e) {
-							Log.e("Serialize", "Error exporting " + vin.getNom() + " " + vin.getMillesime());
+							Log.e("Serialize", "Error exporting " + vin.getNom() + " " + vin.getMillesime(), e);
+							
+							if (filename.getFreeSpace() == 0) {
+								Log.e("Serialize", "No more free space !");
+							}
+							
 							exportError = true;
 							handle.sendMessage(handle.obtainMessage());
 							break;
@@ -103,6 +111,7 @@ public class WineVectorSerializer implements Serializable {
 					out.close();
 				}
 				catch (Exception e) {
+					Log.e("Serialize", "Unhandled exception", e);
 				}
 			}
 		});

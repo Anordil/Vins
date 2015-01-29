@@ -1,9 +1,12 @@
 package com.devilopers.guigeek.vins;
 
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -37,21 +40,25 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
+	  Log.e("Import", "OnCreate");
 		setContentView(R.layout.import_screen);
 		super.onCreate(savedInstanceState);
 
 		Bundle bundle = this.getIntent().getExtras();
-		if (bundle == null) {
+		if (bundle == null || bundle.get(TheWinesApp.WRAPPER) == null) {
 			Toast.makeText(getApplicationContext(), "Bundle null", Toast.LENGTH_SHORT).show();
 			finish();
 		}
 		else {
-			wrapper = (WineVectorSerializer)bundle.get(TheWinesApp.WRAPPER);
+		  String aFilePath = (String) bundle.get(TheWinesApp.WRAPPER);
+		  createWrapper(aFilePath);
+		  
 			if (wrapper == null || wrapper.getData() == null || wrapper.getData().size() == 0) {
 				Toast.makeText(getApplicationContext(), getResources().getString(R.string.no_items_in_wrapper), Toast.LENGTH_SHORT).show();
 				finish();
 			}
 			else {
+			  Log.e("Import", "creating stuff");
 				validateButton = (Button) findViewById(R.id.validateImportButton);
 				validateButton.setOnClickListener(this);
 				checkAll = (CheckBox) findViewById(R.id.checkAll);
@@ -64,6 +71,8 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 					if (vin.getColour().equals(DatabaseAdapter.COLOUR_RED)) colour = getResources().getString(R.string.colour_red);
 					else if (vin.getColour().equals(DatabaseAdapter.COLOUR_ROSE)) colour = getResources().getString(R.string.colour_rose);
 					else if (vin.getColour().equals(DatabaseAdapter.COLOUR_WHITE)) colour = getResources().getString(R.string.colour_white);
+					else if (vin.getColour().equals(DatabaseAdapter.COLOUR_FORTIFIED)) colour = getResources().getString(R.string.colour_fortified);
+					else if (vin.getColour().equals(DatabaseAdapter.COLOUR_CHAMPAGNE)) colour = getResources().getString(R.string.colour_champ);
 					else colour = getResources().getString(R.string.colour_yellow);
 					wineLabels[i] = vin.getNom() + " " + vin.getMillesime() + " (" + vin.getAppellation() + ") - " + colour + " " + vin.getNote() + "/10";
 					++i;
@@ -80,7 +89,42 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 
 
 
-	@Override
+	private void createWrapper(String aFilePath) {
+	  // Get the path of the Selected File.
+	  wrapper = new WineVectorSerializer(false);
+	  FileInputStream fis = null;
+	  ObjectInputStream in = null;
+	  
+	  try {
+	    fis = new FileInputStream(aFilePath);
+	    in = new ObjectInputStream(fis);
+
+	    Vin aWine = (Vin) in.readObject();
+	    while (aWine != null) {
+	      wrapper.getData().add(aWine);
+	      aWine =  (Vin) in.readObject();
+	    }
+	  } 
+	  catch (EOFException ex) {
+	    Log.e("Import", "Reached EOF");
+	  }
+	  catch (Exception ex) {
+	    Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
+	    Log.e("Import", "Exception caught when picking");
+	    this.finish();
+	  }
+	  finally {
+	    try {
+	      in.close();
+	    } catch (IOException e) {
+	    }
+	  }
+
+	}
+
+
+
+  @Override
 	public void onClick(View v) {
 		// The import button is clicked -> try to import the selected wines
 		if (v == validateButton) {
@@ -118,14 +162,16 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 				}
 			}
 
-			mProgress = new ProgressDialog(ImportScreen.this);
-			mProgress.setMax(totalItems);
-			mProgress.setTitle(getResources().getString(R.string.import_title));
-			mProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-			mProgress.setCancelable(false);
+			if (totalItems > 0) {
+			  mProgress = new ProgressDialog(ImportScreen.this);
+	      mProgress.setMax(totalItems);
+	      mProgress.setTitle(getResources().getString(R.string.import_title));
+	      mProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+	      mProgress.setCancelable(false);
 
-			importThres.start();
-			mProgress.show();
+	      importThres.start();
+	      mProgress.show();
+			}
 		}
 
 		else if (v == checkAll) {
@@ -151,18 +197,29 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 
 	private long tryToInsert(Vin vin) {
 		// Try to add this wine to the DB : it may fail
-//		if (vin.get_imageBytes() != null) {
-//			vin.setImagePath(null);
-//			createPicture(vin);
-//		}
+	  boolean imageCreated = false;
+		if (vin.get_imageBytes() != null) {
+			vin.setImagePath(null);
+			imageCreated = createPicture(vin);
+		}
 		long result =  DatabaseAdapter.instance().addEntry(vin.getNom(), vin.getAppellation(), vin.getColour(), vin.getCepage(), 
 				vin.getAccords(), vin.getDescription(), vin.getMillesime(), vin.getNote(), vin.getPrice(), vin.getPointOfSale(), vin.getAgingPotential(), vin.getStock(), vin.getImagePath(), 0);
+		
+		// Add failed, let's delete the image
+		if (result <= 0 && imageCreated) {
+		  File aImage = new File(vin.getImagePath());
+		  if (aImage.exists()) {
+		    aImage.delete();
+		    Log.e("impt", "deleted img as add failed");
+		  }
+		}
+		
 		return result;
 	}
 
 
 
-	private void createPicture(Vin vin) {
+	private boolean createPicture(Vin vin) {
 		if (vin.get_imageBytes() != null) {
 			try {
 				PictureManager aPicMgr = new PictureManager(ImportScreen.this);
@@ -174,6 +231,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 				aFOS.close();
 				Log.e("Import", "Image saved to " + aOutputFile.getAbsolutePath());
 				vin.setImagePath(aOutputFile.getAbsolutePath());
+				return true;
 			} 
 			catch (FileNotFoundException e) {
 				Log.e("Import", "File not found");
@@ -187,6 +245,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 				vin.freeImage();
 			}
 		}
+		return false;
 	}
 
 }

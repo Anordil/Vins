@@ -310,15 +310,15 @@ public class WineListView extends ListActivity {
 	      updateAfterDelete();
 
 	      // Delete the image, if it exists
-//	      if (picturePath != null && picturePath.length() > 0) {
-//	        File pictureFile = new File(picturePath);
-//	        if (pictureFile != null) {
-//	          if (pictureFile.exists()) {
-//	            pictureFile.delete();
-//	            pictureFile = null;
-//	          }
-//	        }
-//	      }
+	      if (picturePath != null && picturePath.length() > 0) {
+	        File pictureFile = new File(picturePath);
+	        if (pictureFile != null) {
+	          if (pictureFile.exists()) {
+	            pictureFile.delete();
+	            pictureFile = null;
+	          }
+	        }
+	      }
 	    }
 	    else {
 	      Toast.makeText(getApplicationContext(), getResources().getString(R.string.wine_delete_error),Toast.LENGTH_SHORT).show();

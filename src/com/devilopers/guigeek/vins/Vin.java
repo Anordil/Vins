@@ -5,9 +5,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 
 
 public class Vin implements Serializable, Comparable<Vin> {
@@ -308,18 +311,37 @@ public class Vin implements Serializable, Comparable<Vin> {
 		  options.inJustDecodeBounds = true;
 		  BitmapFactory.decodeFile(aImageFile.getAbsolutePath(), options);
 		  
-		  // No more than 500px
-		  int largestEdge = Math.max(options.outHeight, options.outWidth);
-		  int ratio = largestEdge/500;
+		  // No more than screen width
+		  int smallEdge = Math.min(options.outHeight, options.outWidth);
+		  Display aScreen = ((WindowManager)TheWinesApp.getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+		  int screenWidth = Math.min(aScreen.getWidth(), aScreen.getHeight());
+		  
+		  int ratio = 1;
+		  if (smallEdge > 0 && screenWidth > 0) {
+		    ratio = smallEdge/screenWidth;
+	      
+	      // Ratio has to be a power of 2
+	      if (ratio > 0 && smallEdge/ratio < screenWidth -100) { 
+	        ratio /= 2;
+	      }
+		  }
+		  
 		  
 		  options.inJustDecodeBounds = false;
 		  options.inSampleSize = ratio;
 		  Bitmap aBitmap = BitmapFactory.decodeFile(aImageFile.getAbsolutePath(), options);
 		  if (aBitmap != null) {
-			  Log.i("Serialize", "There is an image to serialize");
 			  ByteArrayOutputStream stream = new ByteArrayOutputStream();
-			  aBitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream);
+			  boolean result = aBitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream);
+			  
+			  if (!result) {
+			  }
+			  
 			  set_imageBytes(stream.toByteArray());
+			  try {
+				  stream.close();
+			  } catch (IOException e) {
+			  }
 		  }
 	  }
   }

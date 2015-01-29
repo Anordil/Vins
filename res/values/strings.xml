@@ -36,6 +36,7 @@
     <string name="confirm_delete_message">Delete this wine ?</string>
     <string name="confirm_drink_message">Drink this wine ? One bottle will be removed from your stock.</string>
     <string name="confirm_delete_yes">Yes</string>
+    <string name="confirm_delete_cancel">Cancel</string>
     <string name="confirm_delete_no">No</string>
     <string name="takePicture">Take a picture</string>
     <string name="no_wine_in_db">You haven\'t added any wine to your database yet.</string>
@@ -91,8 +92,8 @@
     
     <string name="importer">Import</string>
     <string name="exporter">Export</string>
-    <string name="confirm_export_message">Would you like to export your wines ? This will overwrite the previous export file.</string>
-    <string name="filename">wineList.ser</string>
+    <string name="confirm_export_message">Exporting your Wines will overwrite the previous export file. Would you like to include picture (requires more space)?</string>
+    <string name="filename">wineList</string>
     <string name="export_error">Export failed !</string>
     <string name="export_success">Successfully exported wine list to SD card</string>
     <string name="import_error">The selected file can\'t be imported.</string>

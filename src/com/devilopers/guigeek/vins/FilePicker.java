@@ -3,6 +3,7 @@ package com.devilopers.guigeek.vins;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import android.content.Intent;
@@ -27,36 +28,10 @@ public class FilePicker extends FileChooserActivity {
   @Override
   protected void onFileSelect(File file) {
     if (file != null) {
-      // Get the path of the Selected File.
-      final String path = file.getAbsolutePath();
-      Log.e("Import", "Trying to import " + path);
-      WineVectorSerializer wrapper = null;
-      FileInputStream fis = null;
-      ObjectInputStream in = null;
-      try {
-        fis = new FileInputStream(path);
-        in = new ObjectInputStream(fis);
-        wrapper = new WineVectorSerializer(false);
-        
-        Vin aWine = (Vin) in.readObject();
-        while (aWine != null) {
-        	wrapper.getData().add(aWine);
-        	aWine =  (Vin) in.readObject();
-        }
-        in.close();
-      } 
-      catch (EOFException ex) {
-    	  Log.e("Import", "Reached EOF");
-      }
-      catch (Exception ex) {
-        Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
-        Log.e("Import", "Exception caught when picking");
-        this.finish();
-      }
 
-      // We successfully loaded the file, let's launch the Import screen
+      // The file exists, let's go to the import screen to decode it
       Intent intent = new Intent(FilePicker.this, ImportScreen.class);
-      intent.putExtra(TheWinesApp.WRAPPER, wrapper);
+      intent.putExtra(TheWinesApp.WRAPPER, file.getAbsolutePath());
       startActivity(intent);
       finish();
     } 

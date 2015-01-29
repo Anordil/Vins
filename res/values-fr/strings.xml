@@ -36,6 +36,7 @@
     <string name="confirm_delete_message">Effacer ce vin ?</string>
     <string name="confirm_drink_message">Boire ce vin ? Une bouteille sera retirée de votre stock.</string>
     <string name="confirm_delete_yes">Oui</string>
+    <string name="confirm_delete_cancel">Annuler</string>
     <string name="x_matches">résultats trouvés.</string>
     <string name="confirm_delete_no">Non</string>
     <string name="no_wine_in_db">Vous n\'avez encore ajouté aucun vin à votre base de données.</string>
@@ -91,8 +92,8 @@
     
     <string name="importer">Importer</string>
     <string name="exporter">Exporter</string>
-    <string name="confirm_export_message">Exporter vos vins ? Cette action écrasera le fichier d\'export précédent.</string>
-    <string name="filename">mesVins.ser</string>
+    <string name="confirm_export_message">Exporter vos vins écrasera le fichier d\'export précédent. Inclure les photos (nécéssite plus d\'espace) ?</string>
+    <string name="filename">mesVins</string>
     <string name="export_error">Echec de l\'export !</string>
     <string name="export_success">Export réussi vers la carte SD</string>
     <string name="import_error">Le fichier sélectionné ne peut pas être importé.</string>
