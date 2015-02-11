@@ -434,36 +434,41 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     Set<String> dataVector = new HashSet<String>();
     String[] aStringArray = {};
 
-    
-    SQLiteDatabase db = getReadableDatabase();
-    String sql = "SELECT DISTINCT " + column + " from " + DTNAME_WINES + " ORDER BY " + column + " ASC";
-    Cursor cursor = db.rawQuery(sql, null);
+    try {
+    	SQLiteDatabase db = getReadableDatabase();
+    	String sql = "SELECT DISTINCT " + column + " from " + DTNAME_WINES + " ORDER BY " + column + " ASC";
+    	Cursor cursor = db.rawQuery(sql, null);
 
-    cursor.moveToFirst();
-    while (!cursor.isAfterLast()) {
-    	String data = cursor.getString(cursor.getColumnIndex(column));
-    	
-    	// Remove percentage and change to camel case
-    	String[] comaSet = data.split(",", 0);
-    	for (int j = 0; j < comaSet.length; j++) {
-        	String[] splitSet = comaSet[j].split(" ", 0);
-        	String token = "";
-        	for (int i = 0 ; i < splitSet.length; i++) {
-        		String part = splitSet[i].trim();
-        		if (!part.contains("%") && !part.matches("\\d") && part.length() > 1) {
-        			if (token.length() > 0) token += " ";
-        			token += part.substring(0, 1).toUpperCase(Locale.US) + part.substring(1).toLowerCase(Locale.US);
-        		}
-        		else {
-        			dataVector.add(token.replaceAll(",", ""));
-        			token = "";
-        		}
-        	}
-        	if (token.length() > 0) {
-        		dataVector.add(token.replaceAll(",", ""));
-        	}
+    	cursor.moveToFirst();
+    	while (!cursor.isAfterLast()) {
+    		String data = cursor.getString(cursor.getColumnIndex(column));
+
+    		// Remove percentage and change to camel case
+    		String[] comaSet = data.split(",", 0);
+    		for (int j = 0; j < comaSet.length; j++) {
+    			String[] splitSet = comaSet[j].split(" ", 0);
+    			String token = "";
+    			for (int i = 0 ; i < splitSet.length; i++) {
+    				String part = splitSet[i].trim();
+    				if (!part.contains("%") && !part.matches("\\d") && part.length() > 1) {
+    					if (token.length() > 0) token += " ";
+    					token += part.substring(0, 1).toUpperCase(Locale.US) + part.substring(1).toLowerCase(Locale.US);
+    				}
+    				else {
+    					dataVector.add(token.replaceAll(",", ""));
+    					token = "";
+    				}
+    			}
+    			if (token.length() > 0) {
+    				dataVector.add(token.replaceAll(",", ""));
+    			}
+    		}
+
+    		cursor.moveToNext();
     	}
-    	
+    	cursor.close();
+
+    	// Hardcoded data
     	if (column.equals(KEY_APPELLATION)) {
     		for (int k = 0; k < StaticData.appellations.length; k++) {
     			dataVector.add(StaticData.appellations[k]);
@@ -474,21 +479,17 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     			dataVector.add(StaticData.cepages[k]);
     		}
     	}
-    	
-    	cursor.moveToNext();
-    }
-    cursor.close();
-    
-    
 
-    if (dataVector.size() > 0) {
-      aStringArray = new String[dataVector.size()];
-      int i = 0;
-      for (String token: dataVector) {
-        aStringArray[i++] = token;
-      }
+    	if (dataVector.size() > 0) {
+    		aStringArray = new String[dataVector.size()];
+    		int i = 0;
+    		for (String token: dataVector) {
+    			aStringArray[i++] = token;
+    		}
+    	}
+    	db.close();
     }
-    db.close();
+    catch(Exception e) {}
     return aStringArray;
   }
 
