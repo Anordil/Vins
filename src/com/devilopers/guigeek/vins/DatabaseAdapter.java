@@ -1,5 +1,9 @@
 package com.devilopers.guigeek.vins;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Set;
 import java.util.Vector;
 
 import android.content.ContentValues;
@@ -427,7 +431,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 
 
   public String[] getDistinctData(String column) {
-    Vector<String> dataVector = new Vector<String>();
+    Set<String> dataVector = new HashSet<String>();
     String[] aStringArray = {};
 
     
@@ -437,15 +441,51 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 
     cursor.moveToFirst();
     while (!cursor.isAfterLast()) {
-      dataVector.add(cursor.getString(cursor.getColumnIndex(column)));
-      cursor.moveToNext();
+    	String data = cursor.getString(cursor.getColumnIndex(column));
+    	
+    	// Remove percentage and change to camel case
+    	String[] comaSet = data.split(",", 0);
+    	for (int j = 0; j < comaSet.length; j++) {
+        	String[] splitSet = comaSet[j].split(" ", 0);
+        	String token = "";
+        	for (int i = 0 ; i < splitSet.length; i++) {
+        		String part = splitSet[i].trim();
+        		if (!part.contains("%") && !part.matches("\\d") && part.length() > 1) {
+        			if (token.length() > 0) token += " ";
+        			token += part.substring(0, 1).toUpperCase(Locale.US) + part.substring(1).toLowerCase(Locale.US);
+        		}
+        		else {
+        			dataVector.add(token.replaceAll(",", ""));
+        			token = "";
+        		}
+        	}
+        	if (token.length() > 0) {
+        		dataVector.add(token.replaceAll(",", ""));
+        	}
+    	}
+    	
+    	if (column.equals(KEY_APPELLATION)) {
+    		for (int k = 0; k < StaticData.appellations.length; k++) {
+    			dataVector.add(StaticData.appellations[k]);
+    		}
+    	}
+    	else if (column.equals(KEY_CEPAGE)) {
+    		for (int k = 0; k < StaticData.cepages.length; k++) {
+    			dataVector.add(StaticData.cepages[k]);
+    		}
+    	}
+    	
+    	cursor.moveToNext();
     }
     cursor.close();
+    
+    
 
     if (dataVector.size() > 0) {
       aStringArray = new String[dataVector.size()];
-      for (int i = 0; i < dataVector.size(); i++) {
-        aStringArray[i] = dataVector.get(i);
+      int i = 0;
+      for (String token: dataVector) {
+        aStringArray[i++] = token;
       }
     }
     db.close();
