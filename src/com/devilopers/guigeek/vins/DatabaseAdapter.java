@@ -29,8 +29,9 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
   public static final String 	KEY_POINT_OF_SALE = "lieu";
   public static final String 	KEY_AGING_POTENTIAL = "garde";
   public static final String 	KEY_STOCK = "stock";
-  public static final String  KEY_IMAGE = "image";
-  public static final String  KEY_LOCATION = "location";
+  public static final String    KEY_IMAGE = "image";
+  public static final String    KEY_LOCATION = "location";
+  public static final String    KEY_BUY_AGAIN = "buyagain";
   
 
   public static final String 	MILLESIME_COMPARATOR = "comp-mill";
@@ -49,13 +50,13 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 
   private static final String DATABASE_NAME = "WineSorter";
   private static final String DTNAME_WINES = "vins";
-  private static final int DATABASE_VERSION = 8;
+  private static final int DATABASE_VERSION = 9;
   
   private static final String DTNAME_SECTION = "sections";
   private static final String DTNAME_COMPARTMENT = "compartments";
   public static final String  KEY_PARENT_SECTION = "parent";
 
-  public static final int DBWINE_COL_NB = 15;
+  public static final int DBWINE_COL_NB = 16;
 
   private static final String DATABASE_CREATE =
     "create table " + 	DTNAME_WINES + " (" 
@@ -73,7 +74,8 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     + KEY_AGING_POTENTIAL + 		" int,"
     + KEY_STOCK + 		" int default 0 not null,"
     + KEY_IMAGE + " text,"
-    + KEY_LOCATION +     " int default 0"
+    + KEY_LOCATION +     " int default 0,"
+    + KEY_BUY_AGAIN + " int default 0"
     + ");";
   
   private static final String DBCREATE_SECTION =
@@ -114,32 +116,43 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
       updateDBVersion5(db);
       updateDBVersion6(db);
       updateDBVersion7(db);
+      updateDBVersion8(db);
       break;
     case 4:
       updateDBVersion4(db);
       updateDBVersion5(db);
       updateDBVersion6(db);
       updateDBVersion7(db);
+      updateDBVersion8(db);
       break;
     case 5:
       updateDBVersion5(db);
       updateDBVersion6(db);
       updateDBVersion7(db);
+      updateDBVersion8(db);
       break;
     case 6:
       updateDBVersion6(db);
       updateDBVersion7(db);
+      updateDBVersion8(db);
       break;
     case 7:
       updateDBVersion7(db);
+      updateDBVersion8(db);
       break;
+    case 8:
+        updateDBVersion8(db);
+        break;
     default:
       db.execSQL("DROP TABLE IF EXISTS " + DTNAME_WINES);
       onCreate(db);
       break;
     }
   }
-
+  private void updateDBVersion8(SQLiteDatabase db) {
+	  // Ajouter une nouvelle colonne "buyagain"
+	  db.execSQL("ALTER TABLE " + DTNAME_WINES + " ADD COLUMN "  + KEY_BUY_AGAIN + " int default 0");
+  }
   private void updateDBVersion7(SQLiteDatabase db) {
     // Ajouter une nouvelle colonne "Location" pour les vins, créer les deux tables section et compartment
     db.execSQL("ALTER TABLE " + DTNAME_WINES + " ADD COLUMN "  + KEY_LOCATION + " int");
@@ -178,7 +191,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 
   // Returns the row number if the insert was successful, -1 if it failed because of an error, and -2 if it failed because the same item already exists in DB
   public long addEntry(String nom, String appellation, String couleur, String cepage, String accords, String description, int millesime, int note, double prix, 
-      String lieu, int garde, int quantity, String imagePath, int compartmentId)
+      String lieu, int garde, int quantity, String imagePath, int compartmentId, boolean buyAgain)
   {
     
     SQLiteDatabase db = getWritableDatabase();
@@ -214,6 +227,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     values.put(KEY_STOCK, quantity);
     values.put(KEY_IMAGE, imagePath == null ? "" : imagePath);
     values.put(KEY_LOCATION, compartmentId);
+    values.put(KEY_BUY_AGAIN, buyAgain ? 1 : 0);
     
     long result = db.insert(DTNAME_WINES, null, values);
     db.close();
@@ -241,6 +255,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     values.put(KEY_STOCK, vin.getStock());
     values.put(KEY_IMAGE, vin.getImagePath() == null ? "" : vin.getImagePath());
     values.put(KEY_LOCATION, vin.getLocation() > 0 ? vin.getLocation() : 0);
+    values.put(KEY_BUY_AGAIN, vin.isBuyAgain() ? 1 : 0);
 
     int result = db.update(DTNAME_WINES, values, KEY_ID + "=" + vin.getId(), null);
     if (result != 1) {
@@ -535,7 +550,8 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
                             queryResult.getString(queryResult.getColumnIndex(DatabaseAdapter.KEY_DESCRIPTION)),
                             queryResult.getString(queryResult.getColumnIndex(DatabaseAdapter.KEY_IMAGE)),
                             queryResult.getInt(queryResult.getColumnIndex(DatabaseAdapter.KEY_ID)),
-                            queryResult.getInt(queryResult.getColumnIndex(DatabaseAdapter.KEY_LOCATION))
+                            queryResult.getInt(queryResult.getColumnIndex(DatabaseAdapter.KEY_LOCATION)),
+                            queryResult.getInt(queryResult.getColumnIndex(DatabaseAdapter.KEY_BUY_AGAIN)) == 1 ? true:false
       )
       );
     }

@@ -33,6 +33,7 @@ public class WineAdapter extends ArrayAdapter<Vin> {
 	        TextView stock = (TextView) convertView.findViewById(R.id.listItemStock);
 	        TextView location = (TextView) convertView.findViewById(R.id.listItemLocation);
 	        ImageView icon = (ImageView) convertView.findViewById(R.id.listItemImage);
+	        ImageView caddie = (ImageView) convertView.findViewById(R.id.listItemImageBuy);
 	        
 	        // Don't display empty vintages
 	        String vintage = v.getMillesime() == 0 ? "" : "" + v.getMillesime();
@@ -53,7 +54,7 @@ public class WineAdapter extends ArrayAdapter<Vin> {
 	        	location.setVisibility(View.GONE);
 	        }
 	        if(note != null){
-	        	note.setText("" + v.getNote());
+	        	note.setText("" + v.getNote() + "★");
 	        }
 	        if (icon != null) {
 	        	if (v.getColour().equals(DatabaseAdapter.COLOUR_RED)) {
@@ -74,6 +75,12 @@ public class WineAdapter extends ArrayAdapter<Vin> {
 	        	if (v.getColour().equals(DatabaseAdapter.COLOUR_FORTIFIED)) {
 	        		icon.setImageDrawable(this.getContext().getResources().getDrawable(R.drawable.glass_forti));
 	        	}
+	        }
+	        if (caddie != null && !v.isBuyAgain()) {
+	        	caddie.setVisibility(View.GONE);
+	        }
+	        else if (caddie != null) {
+	        	caddie.setVisibility(View.VISIBLE);
 	        }
         }
         return convertView;

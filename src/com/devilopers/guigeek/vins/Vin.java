@@ -24,6 +24,7 @@ public class Vin implements Serializable, Comparable<Vin> {
 	private int _id, _location = 0;
 	private double _price=0;
 	private byte[] _imageBytes = null;
+	private boolean _buyAgain = false;
 	
 	
 	
@@ -48,7 +49,7 @@ public class Vin implements Serializable, Comparable<Vin> {
 	
 	// All fields
 	public Vin(String nom, String appellation, String colour, int millesime, int note, String cepage, String accords, String pos, int agingPotential, 
-	           double price, int stock, String description, String imagePath, int id, int loca) {
+	           double price, int stock, String description, String imagePath, int id, int loca, boolean buyAgain) {
 		setNom(nom);
 		setAppellation(appellation);
 		setMillesime(millesime);
@@ -64,6 +65,7 @@ public class Vin implements Serializable, Comparable<Vin> {
 		setImagePath(imagePath);
 		setId(id);
 		setLocation(loca);
+		setBuyAgain(buyAgain);
 	}
 	
 
@@ -299,7 +301,15 @@ public class Vin implements Serializable, Comparable<Vin> {
   }
   
   
-  // Read the image from the SD card
+  public boolean isBuyAgain() {
+	return _buyAgain;
+}
+
+public void setBuyAgain(boolean _buyAgain) {
+	this._buyAgain = _buyAgain;
+}
+
+// Read the image from the SD card
   public void loadImage() {
 	  set_imageBytes(null);
 	  if (_imagePath != null && _imagePath.length() > 0) {

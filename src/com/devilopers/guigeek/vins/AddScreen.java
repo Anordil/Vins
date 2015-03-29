@@ -25,6 +25,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.MultiAutoCompleteTextView;
@@ -47,6 +48,7 @@ public class AddScreen extends Activity implements OnClickListener {
 	protected LinearLayout layClassification, layCellar, layAssessment;
 	protected TextView tvClassification, tvCellar, tvAssessment, tvLocation;
 	protected LayoutTransition mTransitioner;
+	protected CheckBox mBuyAgain;
 	
 	public static final String K_MULTIPLE_VALUES_TOKENIZER = ", ";
 	
@@ -70,6 +72,8 @@ public class AddScreen extends Activity implements OnClickListener {
 		tvAssessment = (TextView)findViewById(R.id.tvAssessment);
 		tvLocation = (TextView)findViewById(R.id.labelLocation);
 		tvLocation.setText(getResources().getString(R.string.no_location));
+		
+		mBuyAgain = (CheckBox)findViewById(R.id.checkboxBuyAgain);
 		
 		tvClassification.setOnClickListener(this);
     tvCellar.setOnClickListener(this);
@@ -287,7 +291,8 @@ public class AddScreen extends Activity implements OnClickListener {
 				Integer.parseInt("0" + viewAging.getText().toString()),
 				Integer.parseInt("0" + viewStock.getText().toString()),
 				pictureFile == null ? null : pictureFile.getAbsolutePath(),
-				compartmentId);
+				compartmentId,
+				mBuyAgain.isChecked());
 		
 		if (addResult == -1) {
 			Toast.makeText(getApplicationContext(), getResources().getString(R.string.wine_added_error),Toast.LENGTH_SHORT).show();

@@ -226,7 +226,7 @@
 								<Button android:layout_height="wrap_content" android:layout_width="wrap_content"  android:id="@+id/selectLocation" android:background="@drawable/selector_location" />
 								<TextView android:layout_height="fill_parent" android:layout_width="wrap_content" android:paddingLeft="5dp" android:id="@+id/labelLocation"/>
 							</LinearLayout>
-
+							
                         </LinearLayout>
 
                         <LinearLayout
@@ -258,6 +258,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="left" />
                         </LinearLayout>
+                        <CheckBox android:id="@+id/checkboxBuyAgain" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/buyAgainLabel" />
                     </LinearLayout>
 
                     <TextView

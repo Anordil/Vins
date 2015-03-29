@@ -136,4 +136,6 @@
     <string name="no_location">(Non localisé)</string>
     <string name="ok">Ok</string>
     <string name="update_dialog_location">Bonjour ! \n\nVous pouvez maintenant localiser facilement vos vins en divisant votre cave en sections (ex: \'Mur de gauche\'). Chaque section est divisible en compartiments (ex: \'Etagère du haut\'). J\'espère que celà vous sera utile !</string>
+	<string name="buyAgainLabel">A racheter</string>
+	<string name="buyAgainStock"> (à racheter)</string>
 </resources>

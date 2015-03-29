@@ -20,11 +20,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,6 +43,10 @@ public class WineListView extends ListActivity {
 	private HashMap<Vin, String> _winesMap;
 	private Vin updatedItem = null;
 	
+	private ListView listView = null;
+	private int scrollXOffset = 0;
+	private int scrollY = -1;
+	
 	protected EditText filterText;
 	
 	@Override
@@ -53,6 +59,9 @@ public class WineListView extends ListActivity {
 		
 		filterText = (EditText)findViewById(R.id.filterText);
 		filterText.setOnEditorActionListener(new FilterListener());
+		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); 
+		
+		listView = (ListView)findViewById(android.R.id.list);
 		
 		registerForContextMenu(getListView());
 		
@@ -371,6 +380,20 @@ public class WineListView extends ListActivity {
     catch (Exception e) {
       Toast.makeText(getApplicationContext(), getResources().getString(R.string.unexpected_error), Toast.LENGTH_SHORT).show();
     }
+  }
+  
+  //update & save scroll value on onPause & onResume.
+  @Override
+  protected void onPause() {
+	  super.onPause();
+	  scrollY = listView.getFirstVisiblePosition();
+	  View v = listView.getChildAt(0);
+	  scrollXOffset = (v == null) ? 0 : (v.getTop() - listView.getPaddingTop());
+  }
+  @Override
+  protected void onResume() {
+	  super.onResume();
+	  listView.setSelectionFromTop(scrollY, scrollXOffset);
   }
 	 
 	 

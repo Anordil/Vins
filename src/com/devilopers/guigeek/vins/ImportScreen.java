@@ -203,7 +203,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 			imageCreated = createPicture(vin);
 		}
 		long result =  DatabaseAdapter.instance().addEntry(vin.getNom(), vin.getAppellation(), vin.getColour(), vin.getCepage(), 
-				vin.getAccords(), vin.getDescription(), vin.getMillesime(), vin.getNote(), vin.getPrice(), vin.getPointOfSale(), vin.getAgingPotential(), vin.getStock(), vin.getImagePath(), 0);
+				vin.getAccords(), vin.getDescription(), vin.getMillesime(), vin.getNote(), vin.getPrice(), vin.getPointOfSale(), vin.getAgingPotential(), vin.getStock(), vin.getImagePath(), 0, vin.isBuyAgain());
 		
 		// Add failed, let's delete the image
 		if (result <= 0 && imageCreated) {

@@ -88,6 +88,8 @@ public class EditScreen extends AddScreen {
 		viewStock.setText(String.valueOf(vin.getStock()));
 		compartmentId = vin.getLocation();
 		
+		mBuyAgain.setChecked(vin.isBuyAgain());
+		
 		if (vin.getLocation() != 0) {
 		  tvLocation.setText(DatabaseAdapter.instance().getCompartmentLongName(vin.getLocation()));
 		} else {
@@ -317,6 +319,7 @@ public class EditScreen extends AddScreen {
     vin.setStock(Integer.parseInt("0" + viewStock.getText().toString()));
     vin.setImagePath(pictureFile == null ? null : pictureFile.getAbsolutePath());
     vin.setLocation(compartmentId);
+    vin.setBuyAgain(mBuyAgain.isChecked());
 		
 		boolean updateResult = DatabaseAdapter.instance().updateEntry(vin); 
 		

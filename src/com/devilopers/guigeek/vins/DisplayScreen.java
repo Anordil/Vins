@@ -100,7 +100,9 @@ public class DisplayScreen extends Activity {
 		viewLieu.setText(vin.getPointOfSale());
 		viewAging.setText(String.valueOf(vin.getAgingPotential()));
 		viewColour.setText(vin.getColour());
-		viewStock.setText(vin.getStock() + " " + getResources().getString(R.string.stockSuffix));
+		viewStock.setText(
+				vin.getStock() + " " + getResources().getString(R.string.stockSuffix) 
+				+ ( vin.isBuyAgain() ? " " + getResources().getString(R.string.buyAgainStock) : ""));
 		
 		if (viewLocation != null) {
 		  viewLocation.setText(DatabaseAdapter.instance().getCompartmentLongName(vin.getLocation()));

@@ -151,22 +151,23 @@
 		<Button android:layout_height="wrap_content" android:layout_width="wrap_content"  android:id="@+id/selectLocation" android:background="@drawable/selector_location" />
 	</LinearLayout>
 	
-			<LinearLayout android:id="@+id/layoutPosPrice" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1" >
-				<AutoCompleteTextView 
-					android:id="@+id/inputPointOfSale"
-					android:inputType="textCapSentences"
-					android:layout_width="0dp" android:layout_weight="0.75"
-					android:layout_height="wrap_content" 
-					android:hint="@string/point_of_sale" />
-						
-				<EditText 
-					android:id="@+id/inputPrix"
-					android:inputType="numberDecimal"
-					android:layout_width="0dp" android:layout_weight="0.25"
-					android:layout_height="fill_parent" 
-					android:hint="@string/prix" />
-				<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/currency" android:gravity="left"/>
-			</LinearLayout>
+	<LinearLayout android:id="@+id/layoutPosPrice" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1" >
+		<AutoCompleteTextView 
+			android:id="@+id/inputPointOfSale"
+			android:inputType="textCapSentences"
+			android:layout_width="0dp" android:layout_weight="0.75"
+			android:layout_height="wrap_content" 
+			android:hint="@string/point_of_sale" />
+				
+		<EditText 
+			android:id="@+id/inputPrix"
+			android:inputType="numberDecimal"
+			android:layout_width="0dp" android:layout_weight="0.25"
+			android:layout_height="fill_parent" 
+			android:hint="@string/prix" />
+		<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/currency" android:gravity="left"/>
+	</LinearLayout>
+	<CheckBox android:id="@+id/checkboxBuyAgain" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/buyAgainLabel" />
 	</LinearLayout>
 	
 			

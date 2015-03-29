@@ -137,4 +137,6 @@
     <string name="no_location">(Not located)</string>
     <string name="ok">Ok</string>
     <string name="update_dialog_location">Hello There! \n\nYou can now locate wines in your cellar by breaking it down into sections (e.g. \'Left wall\'). Sections are broken into compartments (e.g. \'Top shelf\'). Hope this helps!</string>
+	<string name="buyAgainLabel">Buy again</string>
+	<string name="buyAgainStock">(buy again)</string>
 </resources>
