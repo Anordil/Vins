@@ -36,6 +36,7 @@
         <activity android:name="com.devilopers.guigeek.vins.PreferencesManager"></activity>
         <activity android:name="com.devilopers.guigeek.vins.SectionScreen"></activity>
         <activity android:name="com.devilopers.guigeek.vins.CompartmentScreen"></activity>
+        <activity android:name="com.devilopers.guigeek.vins.OverviewScreen"></activity>
 
     </application>
 </manifest>

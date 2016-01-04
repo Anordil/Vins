@@ -98,11 +98,24 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 	  try {
 	    fis = new FileInputStream(aFilePath);
 	    in = new ObjectInputStream(fis);
-
-	    Vin aWine = (Vin) in.readObject();
-	    while (aWine != null) {
-	      wrapper.getData().add(aWine);
-	      aWine =  (Vin) in.readObject();
+	    
+	    Object aSerializedObject = in.readObject();
+	    if (aSerializedObject instanceof WineVectorSerializer) {
+	      for (Vin v: ((WineVectorSerializer)aSerializedObject).getData()) {
+	        wrapper.getData().add(v);
+	      }
+	    }
+	    else if (aSerializedObject instanceof Vin) {
+	      Vin aWine = (Vin) aSerializedObject;
+	      while (aWine != null) {
+	        wrapper.getData().add(aWine);
+	        aWine =  (Vin) in.readObject();
+	      }
+	    }
+	    else {
+	      Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
+	      Log.e("Import", "Invalid file: unreckognized serialized class");
+	      this.finish();
 	    }
 	  } 
 	  catch (EOFException ex) {
@@ -114,9 +127,11 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 	    this.finish();
 	  }
 	  finally {
-	    try {
-	      in.close();
-	    } catch (IOException e) {
+	    if (in != null) {
+	      try {
+	        in.close();
+	      } catch (IOException e) {
+	      }
 	    }
 	  }
 

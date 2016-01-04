@@ -81,7 +81,7 @@
     <string name="colour_rose">Rosé</string>
     <string name="colour_white">White</string>
     <string name="colour_yellow">Yellow</string>
-    <string name="colour_champ">Champagne</string>
+    <string name="colour_champ">Sparkling</string>
     <string name="colour_fortified">Fortified</string>
     
     <string name="point_of_sale">Point of sale</string>
@@ -139,4 +139,12 @@
     <string name="update_dialog_location">Hello There! \n\nYou can now locate wines in your cellar by breaking it down into sections (e.g. \'Left wall\'). Sections are broken into compartments (e.g. \'Top shelf\'). Hope this helps!</string>
 	<string name="buyAgainLabel">Buy again</string>
 	<string name="buyAgainStock">(buy again)</string>
+	
+	<string name="overview_total">Total</string>
+	<string name="overview_drinknow">Drink now</string>
+	<string name="overview_drink12">In 1-2 years</string>
+	<string name="overview_drink345">In 3-5 years</string>
+	<string name="overview_drink5plus">In 5-9 years</string>
+	<string name="overview_drink10plus">In 10+ years</string>
+	<string name="overview_drinkunknown">Undefined</string>
 </resources>

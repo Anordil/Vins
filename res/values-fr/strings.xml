@@ -81,7 +81,7 @@
     <string name="colour_rose">Rosé</string>
     <string name="colour_white">Blanc</string>
     <string name="colour_yellow">Jaune</string>
-    <string name="colour_champ">Champagne</string>
+    <string name="colour_champ">Effervescent</string>
     <string name="colour_fortified">Vin Doux</string>
     
     <string name="point_of_sale">Lieu d\'achat</string>
@@ -138,4 +138,12 @@
     <string name="update_dialog_location">Bonjour ! \n\nVous pouvez maintenant localiser facilement vos vins en divisant votre cave en sections (ex: \'Mur de gauche\'). Chaque section est divisible en compartiments (ex: \'Etagère du haut\'). J\'espère que celà vous sera utile !</string>
 	<string name="buyAgainLabel">A racheter</string>
 	<string name="buyAgainStock"> (à racheter)</string>
+	
+		<string name="overview_total">Total</string>
+	<string name="overview_drinknow">Bon à boire</string>
+	<string name="overview_drink12">Dans 1-2 ans</string>
+	<string name="overview_drink345">Dans 3-5 ans</string>
+	<string name="overview_drink5plus">Dans 5-9 ans</string>
+	<string name="overview_drink10plus">Dans 10+ ans</string>
+	<string name="overview_drinkunknown">Non renseigné</string>
 </resources>

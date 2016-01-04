@@ -26,7 +26,7 @@ import com.guigeek.vins.R;
 
 public class TheWinesApp extends Activity implements OnClickListener {
 
-  private Button _buttonAdd, _buttonSearch, _buttonList, _buttonStock;
+  private Button _buttonAdd, _buttonList, _buttonStock, _buttonOverview;
   private static Context context;
 
   public static final String WRAPPER = "WRAPPER";
@@ -40,12 +40,12 @@ public class TheWinesApp extends Activity implements OnClickListener {
     setContentView(R.layout.main);
 
     _buttonAdd = (Button) findViewById(R.id.mainmenu_add);
-    _buttonSearch = (Button) findViewById(R.id.mainmenu_search);
+    _buttonOverview = (Button) findViewById(R.id.mainmenu_overview);
     _buttonList = (Button) findViewById(R.id.mainmenu_list);
     _buttonStock = (Button) findViewById(R.id.mainmenu_stock);
 
     _buttonAdd.setOnClickListener(this);
-    _buttonSearch.setOnClickListener(this);
+    _buttonOverview.setOnClickListener(this);
     _buttonList.setOnClickListener(this);
     _buttonStock.setOnClickListener(this);
 
@@ -73,8 +73,8 @@ public class TheWinesApp extends Activity implements OnClickListener {
       Intent intent = new Intent(TheWinesApp.this, AddScreen.class);
       startActivity(intent);
     }
-    else if (v == _buttonSearch) {
-      Intent intent = new Intent(TheWinesApp.this, SearchScreen.class);
+    else if (v == _buttonOverview) {
+      Intent intent = new Intent(TheWinesApp.this, OverviewScreen.class);
       startActivity(intent);
     }
     else if (v == _buttonList) {
@@ -151,6 +151,10 @@ public class TheWinesApp extends Activity implements OnClickListener {
     // Handle item selection
     if (item.getItemId() == R.id.menu_prefs) {
       Intent intent = new Intent(TheWinesApp.this, PreferencesManager.class);
+      startActivity(intent);
+    }
+    else if (item.getItemId() == R.id.menu_search) {
+      Intent intent = new Intent(TheWinesApp.this, SearchScreen.class);
       startActivity(intent);
     }
     else if (item.getItemId() == R.id.menu_export) {
