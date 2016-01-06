@@ -1,5 +1,6 @@
 package com.devilopers.guigeek.vins;
 
+import java.util.Calendar;
 import java.util.Vector;
 
 import android.app.ActionBar;
@@ -40,6 +41,10 @@ public class SearchScreen extends Activity  implements OnClickListener {
         Spinner spinnerVintage = (Spinner) findViewById(R.id.spinnerMillesime);
         spinnerVintage.setAdapter(adapter);
         spinnerVintage.setSelection(1);
+        
+        Spinner spinnerAging = (Spinner) findViewById(R.id.spinnerAging);
+        spinnerAging.setAdapter(adapter);
+        spinnerAging.setSelection(1);
         
         Spinner spinnerPrice = (Spinner) findViewById(R.id.spinnerPrice);
         spinnerPrice.setAdapter(adapter);
@@ -105,9 +110,11 @@ public class SearchScreen extends Activity  implements OnClickListener {
 			accords = 		((TextView)findViewById(R.id.inputAccords)),
 			pos = 			((TextView)findViewById(R.id.inputPOS)),
 			prix = 			((TextView)findViewById(R.id.inputPrix)),
-			stock = 			((TextView)findViewById(R.id.inputStock));
+			stock = 	  ((TextView)findViewById(R.id.inputStock)),
+			aging =     ((TextView)findViewById(R.id.inputAging));
 		Spinner
 			spinnerMillesime = 	(Spinner)findViewById(R.id.spinnerMillesime),
+			spinnerAging =   (Spinner)findViewById(R.id.spinnerAging),
 			spinnerPrix = 		(Spinner)findViewById(R.id.spinnerPrice),
 			spinnerStock = 		(Spinner)findViewById(R.id.spinnerStock);
 		
@@ -149,6 +156,12 @@ public class SearchScreen extends Activity  implements OnClickListener {
 		if (stock.getText().length() > 0) {
 			values.put(DatabaseAdapter.KEY_STOCK, stock.getText().toString().replace("'", "''"));
 			values.put(DatabaseAdapter.STOCK_COMPARATOR, (String)spinnerStock.getSelectedItem());
+		}
+		
+		if (aging.getText().length() > 0) {
+		  int targetYear = Calendar.getInstance().get(Calendar.YEAR) + Integer.parseInt(aging.getText().toString());
+		  values.put(DatabaseAdapter.KEY_AGING_POTENTIAL, targetYear);
+      values.put(DatabaseAdapter.AGING_COMPARATOR, (String)spinnerAging.getSelectedItem());
 		}
 
 		values.put(DatabaseAdapter.COLOUR_RED, red.isChecked());

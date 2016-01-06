@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Calendar;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -35,6 +36,7 @@ public class Vin implements Serializable, Comparable<Vin> {
 	public final static int SORT_MARK = 	4;
 	public final static int SORT_STOCK = 	5;
 	public final static int SORT_LOCATION = 6;
+	public final static int SORT_AGINGLEFT = 7;
 	public static int sortAccordingTo = SORT_NAME;
 	
 	
@@ -258,6 +260,31 @@ public class Vin implements Serializable, Comparable<Vin> {
 				result = this._millesime - other._millesime;
 			}
 			return result;
+			
+		case SORT_AGINGLEFT:
+		  boolean thisOk = this.getMillesime() > 0 && this.getAgingPotential() > 0;
+		  boolean otherOk = other.getMillesime() > 0 && other.getAgingPotential() > 0;
+		  
+		  if (thisOk && otherOk) {
+	      int targetYearThis = this.getMillesime() + this.getAgingPotential();
+	      int targetYearOther = other.getMillesime() + other.getAgingPotential();
+	      int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+	      
+	      int agingLeftThis = targetYearThis - currentYear;
+	      int agingLeftOther = targetYearOther - currentYear;
+	      
+	      return agingLeftThis - agingLeftOther;
+		  }
+		  // Unknown last
+		  else if (thisOk) {
+		    return -1;
+		  }
+		  else if (otherOk) {
+		    return 1;
+		  }
+		  else {
+		    return 0;
+		  }
 		
 		// Default: name then year
 		default:

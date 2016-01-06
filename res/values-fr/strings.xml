@@ -75,6 +75,7 @@
         <item>Note</item>
         <item>Quantité</item>
         <item>Emplacement</item>
+        <item>Garde restante</item>
     </string-array>
     
     <string name="colour_red">Rouge</string>
@@ -146,4 +147,11 @@
 	<string name="overview_drink5plus">Dans 5-9 ans</string>
 	<string name="overview_drink10plus">Dans 10+ ans</string>
 	<string name="overview_drinkunknown">Non renseigné</string>
+	<string name="agingLeft">Garde restantes (an)</string>
+	<string name="update_dialog_hourglass">
+	    Bonjour !\n\nJ\'ai ajouté un indicateur de la durée de garde restante pour un vin, en fonction de son millésime et du potentiel de garde que vous avez renseigné, affiché sous l\'icone du sablier.\n
+	    Une coche verte indique un vin prêt à être bu, tandis qu\'un nombre vous donnera le nombre d\'années à attendre.\n
+	    Une coche orange indique un vin probablement déjà trop vieux (année de dégustation cible dépassée de plus de 5 ans).
+	</string>
+	
 </resources>

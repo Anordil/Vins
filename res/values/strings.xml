@@ -75,6 +75,7 @@
         <item>Score</item>
         <item>Quantity</item>
         <item>Location</item>
+        <item>Aging left</item>
     </string-array>
     
     <string name="colour_red">Red</string>
@@ -147,4 +148,11 @@
 	<string name="overview_drink5plus">In 5-9 years</string>
 	<string name="overview_drink10plus">In 10+ years</string>
 	<string name="overview_drinkunknown">Undefined</string>
+	<string name="agingLeft">Aging left (y.)</string>
+	<string name="update_dialog_hourglass">
+	    Hello there!\n\nI have added an indicator, displayed under an hourglass icon, of how long you should wait before drinking a wine, depending on its vintage and the aging potential you defined for it.\n
+	    A green tick indicates a wine that is ready to be drunk, while a number tells you how many years you have to wait.\n
+	    An orange tick is shown for wines that may be too old already (5+ years past their target date).
+	</string>
+	
 </resources>

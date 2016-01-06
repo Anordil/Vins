@@ -51,7 +51,21 @@ public class TheWinesApp extends Activity implements OnClickListener {
 
     // Display updates
     SharedPreferences prefs = getSharedPreferences(Constants.PREF, MODE_PRIVATE);
-    if (prefs.getBoolean(Constants.PREF_UPDATE_LOCATION, true)) {
+    if (prefs.getBoolean(Constants.PREF_UPDATE_HOURGLASS, true)) {
+      prefs.edit().putBoolean(Constants.PREF_UPDATE_HOURGLASS, false).commit();
+      
+      AlertDialog.Builder builder = new AlertDialog.Builder(this);
+      builder.setMessage(getResources().getString(R.string.update_dialog_hourglass))
+      .setCancelable(false)
+      .setNegativeButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {
+          dialog.cancel();
+        }
+      });
+      AlertDialog alert = builder.create();
+      alert.show();
+    }
+    else if (prefs.getBoolean(Constants.PREF_UPDATE_LOCATION, true)) {
       prefs.edit().putBoolean(Constants.PREF_UPDATE_LOCATION, false).commit();
       
       AlertDialog.Builder builder = new AlertDialog.Builder(this);

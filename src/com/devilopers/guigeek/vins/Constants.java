@@ -30,5 +30,6 @@ public class Constants {
   public static final String PREF_ASSESSMENTS = "prefassessments";
   public static final String PREF_BEST_WITH = "prefbestservedwith";
   public static final String PREF_UPDATE_LOCATION = "prefdisplayupdatelocation";
+  public static final String PREF_UPDATE_HOURGLASS = "prefdisplayupdatehourglass";
 
 }

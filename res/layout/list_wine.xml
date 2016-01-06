@@ -59,7 +59,7 @@
 		    android:paddingRight="5dp"
 		    android:textSize="16sp"
 		    android:textColor="#000000"
-		    android:layout_marginRight="40dp"
+		    android:layout_marginRight="50dp"
 		    >
 		</TextView>
 		<TextView
@@ -71,20 +71,21 @@
 		    android:textStyle="italic"
 		    android:textSize="16sp"
 		    android:textColor="#000000"
-		    android:layout_marginRight="40dp"
+		    android:layout_marginRight="50dp"
 		>
 		</TextView>
 	</LinearLayout>
 	
 
-	
-	
 
 	<ImageView
 		android:src="@drawable/glass_rouge"
 		android:id="@+id/listItemImage"
 		android:scaleType="fitCenter"
-		android:padding="10dp"
+		android:paddingBottom="10dp"
+		android:paddingTop="10dp"
+		android:paddingRight="10dp"
+		android:paddingLeft="1dp"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
     	android:layout_alignParentRight="true">
@@ -103,4 +104,28 @@
 	    android:layout_alignBottom="@+id/listItemImage"
 	    >
 	</TextView>
+	
+	<ImageView
+		android:src="@drawable/timer"
+		android:id="@+id/listItemTimer"
+		android:scaleType="fitCenter"
+		android:layout_height="wrap_content"
+		android:layout_width="20dp"
+		android:layout_marginRight="5dp"
+    	android:layout_toLeftOf="@id/listItemImage" >
+	</ImageView>
+	<TextView
+		android:id="@+id/listItemAgingLeft"
+		android:layout_width="23dp"
+		android:gravity="center"
+    	android:layout_height="wrap_content"
+	    android:textSize="16sp" 
+	    android:textColor="#000"
+	    android:textStyle="bold"
+	    android:layout_alignLeft="@+id/listItemTimer"
+	    android:layout_alignRight="@+id/listItemTimer"
+	    android:layout_alignTop="@+id/listItemNote"
+	    >
+	</TextView>	
+		
 </RelativeLayout>

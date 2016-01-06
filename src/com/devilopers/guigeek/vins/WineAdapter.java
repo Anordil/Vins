@@ -1,4 +1,6 @@
 package com.devilopers.guigeek.vins;
+import java.util.Calendar;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,8 +34,10 @@ public class WineAdapter extends ArrayAdapter<Vin> {
 	        TextView note = (TextView) convertView.findViewById(R.id.listItemNote);
 	        TextView stock = (TextView) convertView.findViewById(R.id.listItemStock);
 	        TextView location = (TextView) convertView.findViewById(R.id.listItemLocation);
+	        TextView aging = (TextView) convertView.findViewById(R.id.listItemAgingLeft);
 	        ImageView icon = (ImageView) convertView.findViewById(R.id.listItemImage);
 	        ImageView caddie = (ImageView) convertView.findViewById(R.id.listItemImageBuy);
+	        ImageView hourglass = (ImageView) convertView.findViewById(R.id.listItemTimer);
 	        
 	        // Don't display empty vintages
 	        String vintage = v.getMillesime() == 0 ? "" : "" + v.getMillesime();
@@ -82,6 +86,35 @@ public class WineAdapter extends ArrayAdapter<Vin> {
 	        else if (caddie != null) {
 	        	caddie.setVisibility(View.VISIBLE);
 	        }
+	        
+	        // Aging left
+	        String agingLeft = "?";
+	        aging.setTextColor(0xFF000000);
+	        hourglass.setImageDrawable(this.getContext().getResources().getDrawable(R.drawable.timer));
+	        if (v.getMillesime() > 0 && v.getAgingPotential() > 0) {
+	          int targetYear = v.getMillesime() + v.getAgingPotential();
+	          int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+	          
+	          int agingLeftInt = targetYear - currentYear;
+	          if (agingLeftInt <= -5) {
+              agingLeft = "✔";
+              hourglass.setImageDrawable(this.getContext().getResources().getDrawable(R.drawable.timer_empty));
+              aging.setTextColor(0xFFFFA800);
+            }
+	          else if (agingLeftInt <= 0) {
+	            agingLeft = "✔";
+	            hourglass.setImageDrawable(this.getContext().getResources().getDrawable(R.drawable.timer_empty));
+	            aging.setTextColor(0xFF20aa00);
+	          }
+	          else {
+	            agingLeft = String.valueOf(agingLeftInt);
+	          }
+	          
+	          if (agingLeftInt == 1) {
+	            aging.setTextColor(0xFFFFA800);
+	          }
+	        }
+	        aging.setText(agingLeft);
         }
         return convertView;
 	}

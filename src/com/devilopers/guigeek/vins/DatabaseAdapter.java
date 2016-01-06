@@ -37,6 +37,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
   public static final String 	MILLESIME_COMPARATOR = "comp-mill";
   public static final String 	PRICE_COMPARATOR = "comp-prix";
   public static final String 	STOCK_COMPARATOR = "comp-stock";
+  public static final String  AGING_COMPARATOR = "comp-aging";
 
   public static final String COLOUR_RED = "rouge";
   public static final String COLOUR_WHITE = "blanc";
@@ -274,19 +275,22 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     SQLiteDatabase db = getReadableDatabase();
 
     String[] selectionArgs = 
-    {"'" + (values.containsKey(KEY_NOM) ? "%" + values.getAsString(KEY_NOM) : "") + "%'",
+    {
+        "'" + (values.containsKey(KEY_NOM) ? "%" + values.getAsString(KEY_NOM) : "") + "%'",
         "'" + (values.containsKey(KEY_APPELLATION)? "%" + values.getAsString(KEY_APPELLATION) : "") + "%'",
         "'" + (values.containsKey(KEY_CEPAGE) ? "%" + values.getAsString(KEY_CEPAGE) : "") + "%'",
         "'" + (values.containsKey(KEY_ACCORDS) ? "%" + values.getAsString(KEY_ACCORDS) : "") + "%'",
         values.containsKey(KEY_MILLESIME) ? values.getAsString(KEY_MILLESIME) : "-1",
-            values.containsKey(KEY_PRIX) ? values.getAsString(KEY_PRIX) : "-1",
-                "'" + (values.containsKey(KEY_POINT_OF_SALE) ? "%" + values.getAsString(KEY_POINT_OF_SALE) : "") + "%'",
-                values.containsKey(KEY_STOCK) ? values.getAsString(KEY_STOCK) : "-1",
+        values.containsKey(KEY_PRIX) ? values.getAsString(KEY_PRIX) : "-1",
+        "'" + (values.containsKey(KEY_POINT_OF_SALE) ? "%" + values.getAsString(KEY_POINT_OF_SALE) : "") + "%'",
+        values.containsKey(KEY_STOCK) ? values.getAsString(KEY_STOCK) : "-1",
+        values.containsKey(KEY_AGING_POTENTIAL) ? values.getAsString(KEY_AGING_POTENTIAL) : "-1"
     };
 
     String operatorForPrice = values.containsKey(PRICE_COMPARATOR) ? values.getAsString(PRICE_COMPARATOR) : ">=",
            operatorForYear  = values.containsKey(MILLESIME_COMPARATOR) ? values.getAsString(MILLESIME_COMPARATOR) : ">=",
-           operatorForStock = values.containsKey(STOCK_COMPARATOR) ? values.getAsString(STOCK_COMPARATOR) : ">=";
+           operatorForStock = values.containsKey(STOCK_COMPARATOR) ? values.getAsString(STOCK_COMPARATOR) : ">=",
+           operatorForAging = values.containsKey(AGING_COMPARATOR) ? values.getAsString(AGING_COMPARATOR) : ">=";
 
     // change < into <=, = into == and > into >=
     if (operatorForPrice.length() == 1) {
@@ -297,6 +301,9 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     }
     if (operatorForStock.equals("=")) {
       operatorForStock += "=";
+    }
+    if (operatorForAging.length() == 1) {
+      operatorForAging += "=";
     }
   
     // Filter by colour
@@ -333,8 +340,10 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
                    + " AND " + KEY_CEPAGE + " LIKE " + selectionArgs[2] + " AND " + KEY_ACCORDS + " LIKE " + selectionArgs[3] 
                    + " AND " + KEY_POINT_OF_SALE + " LIKE " + selectionArgs[6] + " AND " + KEY_MILLESIME + " " + operatorForYear 
                    + " " + selectionArgs[4] + " AND " + KEY_PRIX + " " + operatorForPrice + " " + selectionArgs[5]  + " AND " + KEY_STOCK 
-                   + " " + operatorForStock + " " + selectionArgs[7] + " AND (" + colourWhere + ")";
+                   + " " + operatorForStock + " " + selectionArgs[7] + " AND (" + colourWhere + ") "
+                   + " AND (" + KEY_MILLESIME + " + " + KEY_AGING_POTENTIAL + ") " + operatorForAging + " " + selectionArgs[8];
     
+    System.out.println("Qeury:"  +where);
     Cursor cursor = db.query(DTNAME_WINES, null, where, null, null, null, KEY_NOM + " ASC, " + KEY_MILLESIME + " ASC");
     Vector<Vin> result = cursorToWineVector(cursor);
     cursor.close();

@@ -5,15 +5,11 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -136,30 +132,30 @@ public class OverviewScreen extends Activity {
         aggregatedWines.put(colour, aAggregate);
       }
       
-      aAggregate.total++;
+      aAggregate.total += vin.getStock();
       if (vin.getMillesime() > 0 && vin.getAgingPotential() > 0) {
         int targetYear = vin.getMillesime() + vin.getAgingPotential();
         if (targetYear <= currentYear) {
-          aAggregate.now++;
+          aAggregate.now += vin.getStock();
         }
         else {
           int left = targetYear - currentYear;
           if (left >= 10) {
-            aAggregate.tenPlus++;
+            aAggregate.tenPlus += vin.getStock();
           }
           else if (left >= 5) {
-            aAggregate.fivePlus++;
+            aAggregate.fivePlus += vin.getStock();
           }
           else if (left >= 3) {
-            aAggregate.threeFive++;
+            aAggregate.threeFive += vin.getStock();
           }
           else {
-            aAggregate.oneTwo++;
+            aAggregate.oneTwo += vin.getStock();
           }
         }
       }
       else {
-        aAggregate.unknown++;
+        aAggregate.unknown += vin.getStock();
       }
     }
   }
