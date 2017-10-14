@@ -1,12 +1,5 @@
 package com.devilopers.guigeek.vins;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.Vector;
-
 import android.app.ProgressDialog;
 import android.os.Environment;
 import android.os.Handler;
@@ -15,6 +8,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.guigeek.vins.R;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.io.Serializable;
+import java.util.Vector;
 
 public class WineVectorSerializer implements Serializable {
 	
@@ -58,6 +59,7 @@ public class WineVectorSerializer implements Serializable {
 
 		File rootFolder = Environment.getExternalStorageDirectory();
 		final File filename = new File(rootFolder, iFileName).getAbsoluteFile();
+		final File filenameCSV = new File(rootFolder, iFileName + ".csv").getAbsoluteFile();
 		final boolean includePics = bIncludePics;
 		exportError = false;
 		
@@ -76,7 +78,10 @@ public class WineVectorSerializer implements Serializable {
 
 				try {
 					FileOutputStream fos =  new FileOutputStream(filename);
+					PrintWriter writerCSV =  new PrintWriter(filenameCSV);
 					ObjectOutputStream out = new ObjectOutputStream(fos);
+
+					writerCSV.println("name, appellation, type, price, stock");
 
 					for (Vin vin: data) {
 						
@@ -88,7 +93,10 @@ public class WineVectorSerializer implements Serializable {
 						  else {
 						    vin.set_imageBytes(null);
 						  }
-							
+
+						  if (vin.getStock() > 0) {
+							  writerCSV.println(vin.getNom() + ',' + vin.getAppellation() + ',' + vin.getColour() + ',' + vin.getPrice() + ',' + vin.getStock());
+						  }
 							out.writeObject(vin);
 							out.flush();
 						} 
@@ -108,6 +116,7 @@ public class WineVectorSerializer implements Serializable {
 						}
 						handle.sendMessage(handle.obtainMessage());
 					}
+					writerCSV.close();
 					out.close();
 				}
 				catch (Exception e) {
