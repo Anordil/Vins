@@ -7,6 +7,8 @@ import android.widget.Toast;
 import com.guigeek.vins.R;
 import com.ipaulpro.afilechooser.FileChooserActivity;
 
+import java.io.File;
+
 public class FilePicker extends FileChooserActivity {
 
   @Override
