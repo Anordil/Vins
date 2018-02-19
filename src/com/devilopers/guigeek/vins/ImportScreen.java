@@ -1,13 +1,5 @@
 package com.devilopers.guigeek.vins;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
@@ -113,7 +105,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 	      }
 	    }
 	    else {
-	      Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
+		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
 	      Log.e("Import", "Invalid file: unreckognized serialized class");
 	      this.finish();
 	    }
@@ -122,7 +114,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 	    Log.e("Import", "Reached EOF");
 	  }
 	  catch (Exception ex) {
-	    Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
+		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
 	    Log.e("Import", "Exception caught when picking");
 	    this.finish();
 	  }

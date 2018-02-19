@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.guigeek.vins"
-      android:installLocation="auto" android:versionName="3.3.1" android:versionCode="42">
-    <uses-sdk android:targetSdkVersion="12" android:minSdkVersion="12"></uses-sdk>
+      android:installLocation="auto" android:versionName="3.3.2" android:versionCode="43">
+    <uses-sdk android:targetSdkVersion="19" android:minSdkVersion="19"></uses-sdk>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <supports-screens android:normalScreens="true" android:anyDensity="true" android:resizeable="false" android:smallScreens="true" android:largeScreens="true" android:xlargeScreens="true"/>
