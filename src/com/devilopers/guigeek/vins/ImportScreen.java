@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 
 public class ImportScreen extends ListActivity  implements OnClickListener {
@@ -50,8 +52,8 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 			finish();
 		}
 		else {
-		  String aFilePath = (String) bundle.get(TheWinesApp.WRAPPER);
-		  createWrapper(aFilePath);
+		  Uri uri = (Uri) bundle.get(TheWinesApp.WRAPPER);
+		  createWrapper(uri);
 		  
 			if (wrapper == null || wrapper.getData() == null || wrapper.getData().size() == 0) {
 				Toast.makeText(getApplicationContext(), getResources().getString(R.string.no_items_in_wrapper), Toast.LENGTH_SHORT).show();
@@ -89,15 +91,15 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 
 
 
-	private void createWrapper(String aFilePath) {
+	private void createWrapper(Uri uri) {
 	  // Get the path of the Selected File.
 	  wrapper = new WineVectorSerializer(false);
-	  FileInputStream fis = null;
+	  InputStream is = null;
 	  ObjectInputStream in = null;
 	  
 	  try {
-	    fis = new FileInputStream(aFilePath);
-	    in = new ObjectInputStream(fis);
+	    is = getContentResolver().openInputStream(uri);
+	    in = new ObjectInputStream(is);
 	    
 	    Object aSerializedObject = in.readObject();
 	    if (aSerializedObject instanceof WineVectorSerializer) {
@@ -124,6 +126,7 @@ public class ImportScreen extends ListActivity  implements OnClickListener {
 	  catch (Exception ex) {
 		  Toast.makeText(getApplicationContext(), getResources().getString(R.string.import_error), Toast.LENGTH_SHORT).show();
 	    Log.e("Import", "Exception caught when picking");
+	    ex.printStackTrace();
 	    this.finish();
 	  }
 	  finally {
