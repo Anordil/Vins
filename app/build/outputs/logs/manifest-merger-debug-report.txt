@@ -1,0 +1,155 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:2:1-41:12
+	package
+		INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:3:38-65
+		INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:3:66-90
+		INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml
+	android:installLocation
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:3:7-37
+uses-sdk
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:4:5-26
+INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:4:5-26
+INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:4:5-26
+	android:targetSdkVersion
+		INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:5:5-81
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:5:22-78
+uses-feature#android.hardware.camera
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:6:5-85
+	android:required
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:6:58-82
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:6:19-57
+supports-screens
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:5-191
+	android:largeScreens
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:133-160
+	android:smallScreens
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:105-132
+	android:normalScreens
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:23-51
+	android:xlargeScreens
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:161-189
+	android:resizeable
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:78-104
+	android:anyDensity
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:52-77
+application
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:5-40:19
+INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:5-40:19
+	android:extractNativeLibs
+		INJECTED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml
+	android:label
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:48-80
+	android:allowClearUserData
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:81-114
+	android:testOnly
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:115-139
+	android:icon
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:18-47
+	android:allowBackup
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:140-167
+	android:theme
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:169-197
+activity#com.devilopers.guigeek.vins.TheWinesApp
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:11:9-17:20
+	android:label
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:11:19-51
+	android:exported
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:12:13-36
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:11:52-106
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:13:10-16:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:15:17-77
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:15:27-74
+activity#com.devilopers.guigeek.vins.AddScreen
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:18:9-125
+	android:windowSoftInputMode
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:18:19-60
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:18:61-113
+activity#com.devilopers.guigeek.vins.SearchScreen
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:19:9-128
+	android:windowSoftInputMode
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:19:19-60
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:19:61-116
+activity#com.devilopers.guigeek.vins.WineListView
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:20:9-86
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:20:19-74
+activity#com.devilopers.guigeek.vins.EditScreen
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:21:9-126
+	android:windowSoftInputMode
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:21:19-60
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:21:61-114
+activity#com.devilopers.guigeek.vins.DisplayScreen
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:22:9-87
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:22:19-75
+activity#com.devilopers.guigeek.vins.ImportScreen
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:23:9-76
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:23:19-74
+activity#com.devilopers.guigeek.vins.FilePicker
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:26:9-34:20
+	android:exported
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:27:13-36
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:26:19-72
+intent-filter#action:name:android.intent.action.GET_CONTENT+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.OPENABLE+data:mimeType:*/*
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:28:13-33:29
+action#android.intent.action.GET_CONTENT
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:29:17-76
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:29:25-73
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:30:17-76
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:30:27-73
+category#android.intent.category.OPENABLE
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:31:17-77
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:31:27-74
+data
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:32:17-48
+	android:mimeType
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:32:23-45
+activity#com.devilopers.guigeek.vins.PreferencesManager
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:35:9-92
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:35:19-80
+activity#com.devilopers.guigeek.vins.SectionScreen
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:36:9-87
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:36:19-75
+activity#com.devilopers.guigeek.vins.CompartmentScreen
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:37:9-91
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:37:19-79
+activity#com.devilopers.guigeek.vins.OverviewScreen
+ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:38:9-88
+	android:name
+		ADDED from C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:38:19-76

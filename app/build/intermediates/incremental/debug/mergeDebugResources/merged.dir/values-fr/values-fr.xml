@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="colour_array">
+        <item>Rouge</item>
+        <item>Blanc</item>
+        <item>Rosé</item>
+        <item>Jaune</item>
+        <item>Champagne</item>
+        <item>Vin doux</item>
+    </string-array>
+    <string-array name="sign_array">
+        <item>&lt;</item>
+        <item>=</item>
+        <item>></item>
+    </string-array>
+    <string-array name="sort_array">
+        <item>Nom</item>
+        <item>Appellation</item>
+        <item>Millésime</item>
+        <item>Couleur</item>
+        <item>Note</item>
+        <item>Quantité</item>
+        <item>Emplacement</item>
+        <item>Garde restante</item>
+    </string-array>
+    <color name="color_white">#FFF</color>
+    <string name="accords">Accords</string>
+    <string name="addCompartmentLabel">Nv. compartiment:</string>
+    <string name="addSectionLabel">Nvl. section:</string>
+    <string name="agingLeft">Garde restantes (an)</string>
+    <string name="aging_potential">Durée de garde</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="already_exists_error">Echec de l\'ajout : un vin avec les mêmes nom, appellation, couleur et millésime existe déjà.</string>
+    <string name="app_name">Vins</string>
+    <string name="appellation">Appellation</string>
+    <string name="assessment">Appréciations</string>
+    <string name="bottles"> bouteille(s)</string>
+    <string name="buyAgainLabel">A racheter</string>
+    <string name="buyAgainStock"> (à racheter)</string>
+    <string name="cave_mgt">Gestion de la cave</string>
+    <string name="cepage">Cépage(s)</string>
+    <string name="classification">Classification</string>
+    <string name="colour_champ">Effervescent</string>
+    <string name="colour_fortified">Vin Doux</string>
+    <string name="colour_prompt">Veuillez choisir une couleur</string>
+    <string name="colour_red">Rouge</string>
+    <string name="colour_rose">Rosé</string>
+    <string name="colour_white">Blanc</string>
+    <string name="colour_yellow">Jaune</string>
+    <string name="compartment_already_exists">Un compartment du même nom existe déjà pour cette section</string>
+    <string name="confirm_delete_cancel">Annuler</string>
+    <string name="confirm_delete_message">Effacer ce vin ?</string>
+    <string name="confirm_delete_no">Non</string>
+    <string name="confirm_delete_yes">Oui</string>
+    <string name="confirm_drink_message">Boire ce vin ? Une bouteille sera retirée de votre stock.</string>
+    <string name="confirm_export_message">Exporter vos vins écrasera le fichier d\'export précédent. Inclure les photos (nécéssite plus d\'espace) ?</string>
+    <string name="deleteWine">Supprimer</string>
+    <string name="description">Description</string>
+    <string name="display">Afficher</string>
+    <string name="drink">Boire une bouteille</string>
+    <string name="drink_not_enough">Vous n\'avez aucune bouteille de ce vin.</string>
+    <string name="drink_ok">Une bouteille a été retirée de votre cave.</string>
+    <string name="editDone">Terminer</string>
+    <string name="editWine">Mettre à jour</string>
+    <string name="equals">=</string>
+    <string name="export_error">Echec de l\'export !</string>
+    <string name="export_success">Export réussi vers la carte SD</string>
+    <string name="exporter">Exporter</string>
+    <string name="filename">mesVins</string>
+    <string name="greater">></string>
+    <string name="hide_or_show">Afficher ou cacher les champs</string>
+    <string name="hint_stock">Nb. bouteilles</string>
+    <string name="hint_stock_search">Bouteilles en stock</string>
+    <string name="home">Accueil</string>
+    <string name="hs_aging">Durée de garde</string>
+    <string name="hs_assessments">Description du vin</string>
+    <string name="hs_best_with">Accords mets/vins</string>
+    <string name="hs_picture">Gestion des photos</string>
+    <string name="hs_price">Prix et lieu d\'achat</string>
+    <string name="hs_stock">Gestion du stock</string>
+    <string name="hs_variety">Cépages</string>
+    <string name="import_error">Le fichier sélectionné ne peut pas être importé.</string>
+    <string name="import_title">Import en cours...</string>
+    <string name="importer">Importer</string>
+    <string name="invalid_date_format_erorr">Veuillez entrer une année à 4 chiffres ou laisser ce champ vide</string>
+    <string name="loadPicture">Ouvrir une photo</string>
+    <string name="lower">&lt;</string>
+    <string name="mandatory_field_erorr">Veuillez remplir ce champ</string>
+    <string name="millesime">Millésime</string>
+    <string name="my_cave">Ma cave à vin</string>
+    <string name="no_camera">Pas d\'appareil photo détecté.</string>
+    <string name="no_camera_app">Pas d\'application photo détectée.</string>
+    <string name="no_items_in_wrapper">Aucun vin retrouvé dans ce fichier !</string>
+    <string name="no_location">(Non localisé)</string>
+    <string name="no_result_message">Aucun résultat trouvé !</string>
+    <string name="no_vintage">Non millesimé</string>
+    <string name="no_wine_in_db">Vous n\'avez encore ajouté aucun vin à votre base de données.</string>
+    <string name="no_wine_in_stock">Votre cave est vide.</string>
+    <string name="nom">Nom</string>
+    <string name="ok">Ok</string>
+    <string name="open_edit_error">Erreur, impossible d\'éditer ce vin.</string>
+    <string name="out_of">vins sur</string>
+    <string name="overview_drink10plus">Dans 10+ ans</string>
+    <string name="overview_drink12">Dans 1-2 ans</string>
+    <string name="overview_drink345">Dans 3-5 ans</string>
+    <string name="overview_drink5plus">Dans 5-9 ans</string>
+    <string name="overview_drinknow">Bon à boire</string>
+    <string name="overview_drinkunknown">Non renseigné</string>
+    <string name="overview_total">Total</string>
+    <string name="picture_error">La photo n\'a pas été prise.</string>
+    <string name="picture_folder">MesVins_photos</string>
+    <string name="picture_ok">Photo enregistrée.</string>
+    <string name="point_of_sale">Lieu d\'achat</string>
+    <string name="prix">Prix</string>
+    <string name="search">Rechercher</string>
+    <string name="section_already_exists">Cette section existe déjà</string>
+    <string name="sections">Sections</string>
+    <string name="select_compartment">Choisissez un compartiment dans cette section</string>
+    <string name="select_section">Choisissez une section dans votre cave</string>
+    <string name="settings">Réglages</string>
+    <string name="sortCriteria">Trier par :</string>
+    <string name="stock">bt.</string>
+    <string name="stockSuffix"> bouteille(s) en stock</string>
+    <string name="takePicture">Prendre une photo</string>
+    <string name="unexpected_error">Une erreur est survenue.</string>
+    <string name="update_dialog_hourglass">
+	    Bonjour !\n\nJ\'ai ajouté un indicateur de la durée de garde restante pour un vin, en fonction de son millésime et du potentiel de garde que vous avez renseigné, affiché sous l\'icone du sablier.\n
+	    Une coche verte indique un vin prêt à être bu, tandis qu\'un nombre vous donnera le nombre d\'années à attendre.\n
+	    Une coche orange indique un vin probablement déjà trop vieux (année de dégustation cible dépassée de plus de 5 ans).
+	</string>
+    <string name="update_dialog_location">Bonjour ! \n\nVous pouvez maintenant localiser facilement vos vins en divisant votre cave en sections (ex: \'Mur de gauche\'). Chaque section est divisible en compartiments (ex: \'Etagère du haut\'). J\'espère que celà vous sera utile !</string>
+    <string name="view_list">Liste des vins</string>
+    <string name="were_added">ont été ajoutés à votre base de données.</string>
+    <string name="wine_added_error">Erreur lors de l\'ajout.</string>
+    <string name="wine_added_message">Vin ajouté.</string>
+    <string name="wine_delete_error">Erreur lors de la suppression !</string>
+    <string name="wine_delete_success">Suppression réussie.</string>
+    <string name="wine_updated_error">Echec de la mise à jour.</string>
+    <string name="wine_updated_message">Mise à jour réussie.</string>
+    <string name="x_matches">résultats trouvés.</string>
+    <string name="years">an(s)</string>
+</resources>

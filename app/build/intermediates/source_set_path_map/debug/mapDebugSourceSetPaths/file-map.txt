@@ -1,0 +1,7 @@
+Vins.app-pngs-0 C:\Users\Anord\AndroidStudioProjects\Vins\app\build\generated\res\pngs\debug
+Vins.app-resValues-1 C:\Users\Anord\AndroidStudioProjects\Vins\app\build\generated\res\resValues\debug
+Vins.app-mergeDebugResources-2 C:\Users\Anord\AndroidStudioProjects\Vins\app\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+Vins.app-mergeDebugResources-3 C:\Users\Anord\AndroidStudioProjects\Vins\app\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+Vins.app-debug-4 C:\Users\Anord\AndroidStudioProjects\Vins\app\build\intermediates\merged_res\debug\mergeDebugResources
+Vins.app-debug-5 C:\Users\Anord\AndroidStudioProjects\Vins\app\src\debug\res
+Vins.app-main-6 C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\res

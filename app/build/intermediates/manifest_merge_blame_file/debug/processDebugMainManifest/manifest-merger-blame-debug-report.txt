@@ -1,0 +1,139 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.guigeek.vins"
+4    android:installLocation="auto"
+5    android:versionCode="43"
+6    android:versionName="3.3.2" >
+7
+8    <uses-sdk
+8-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:4:5-26
+9        android:minSdkVersion="34"
+10        android:targetSdkVersion="34" />
+11
+12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+12-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:5:5-81
+12-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:5:22-78
+13
+14    <uses-feature
+14-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:6:5-85
+15        android:name="android.hardware.camera"
+15-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:6:19-57
+16        android:required="false" />
+16-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:6:58-82
+17
+18    <supports-screens
+18-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:5-191
+19        android:anyDensity="true"
+19-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:52-77
+20        android:largeScreens="true"
+20-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:133-160
+21        android:normalScreens="true"
+21-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:23-51
+22        android:resizeable="false"
+22-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:78-104
+23        android:smallScreens="true"
+23-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:105-132
+24        android:xlargeScreens="true" />
+24-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:7:161-189
+25
+26    <application
+26-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:5-40:19
+27        android:allowBackup="false"
+27-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:140-167
+28        android:allowClearUserData="true"
+28-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:81-114
+29        android:debuggable="true"
+30        android:extractNativeLibs="false"
+31        android:icon="@drawable/icon"
+31-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:18-47
+32        android:label="@string/app_name"
+32-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:48-80
+33        android:testOnly="true"
+33-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:115-139
+34        android:theme="@style/Wines" >
+34-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:10:169-197
+35        <activity
+35-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:11:9-17:20
+36            android:name="com.devilopers.guigeek.vins.TheWinesApp"
+36-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:11:52-106
+37            android:exported="true"
+37-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:12:13-36
+38            android:label="@string/app_name" >
+38-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:11:19-51
+39            <intent-filter>
+39-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:13:10-16:29
+40                <action android:name="android.intent.action.MAIN" />
+40-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:14:17-69
+40-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:14:25-66
+41
+42                <category android:name="android.intent.category.LAUNCHER" />
+42-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:15:17-77
+42-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:15:27-74
+43            </intent-filter>
+44        </activity>
+45        <activity
+45-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:18:9-125
+46            android:name="com.devilopers.guigeek.vins.AddScreen"
+46-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:18:61-113
+47            android:windowSoftInputMode="stateHidden" />
+47-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:18:19-60
+48        <activity
+48-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:19:9-128
+49            android:name="com.devilopers.guigeek.vins.SearchScreen"
+49-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:19:61-116
+50            android:windowSoftInputMode="stateHidden" />
+50-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:19:19-60
+51        <activity android:name="com.devilopers.guigeek.vins.WineListView" />
+51-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:20:9-86
+51-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:20:19-74
+52        <activity
+52-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:21:9-126
+53            android:name="com.devilopers.guigeek.vins.EditScreen"
+53-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:21:61-114
+54            android:windowSoftInputMode="stateHidden" />
+54-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:21:19-60
+55        <activity android:name="com.devilopers.guigeek.vins.DisplayScreen" />
+55-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:22:9-87
+55-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:22:19-75
+56        <activity android:name="com.devilopers.guigeek.vins.ImportScreen" />
+56-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:23:9-76
+56-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:23:19-74
+57        <activity
+57-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:26:9-34:20
+58            android:name="com.devilopers.guigeek.vins.FilePicker"
+58-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:26:19-72
+59            android:exported="true" >
+59-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:27:13-36
+60            <intent-filter>
+60-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:28:13-33:29
+61                <action android:name="android.intent.action.GET_CONTENT" />
+61-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:29:17-76
+61-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:29:25-73
+62
+63                <category android:name="android.intent.category.DEFAULT" />
+63-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:30:17-76
+63-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:30:27-73
+64                <category android:name="android.intent.category.OPENABLE" />
+64-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:31:17-77
+64-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:31:27-74
+65
+66                <data android:mimeType="*/*" />
+66-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:32:17-48
+66-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:32:23-45
+67            </intent-filter>
+68        </activity>
+69        <activity android:name="com.devilopers.guigeek.vins.PreferencesManager" />
+69-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:35:9-92
+69-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:35:19-80
+70        <activity android:name="com.devilopers.guigeek.vins.SectionScreen" />
+70-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:36:9-87
+70-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:36:19-75
+71        <activity android:name="com.devilopers.guigeek.vins.CompartmentScreen" />
+71-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:37:9-91
+71-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:37:19-79
+72        <activity android:name="com.devilopers.guigeek.vins.OverviewScreen" />
+72-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:38:9-88
+72-->C:\Users\Anord\AndroidStudioProjects\Vins\app\src\main\AndroidManifest.xml:38:19-76
+73    </application>
+74
+75</manifest>

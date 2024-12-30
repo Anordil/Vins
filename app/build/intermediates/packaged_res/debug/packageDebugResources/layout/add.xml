@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" >
+	    
+	    <ImageView android:src="@drawable/background" android:scaleType="centerCrop" android:layout_width="fill_parent" android:layout_height="fill_parent"/>
+	    
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
+	
+	<ScrollView  android:layout_width="fill_parent"  android:layout_height="0dp" android:layout_weight="1" >
+	
+	<LinearLayout 
+		android:orientation="vertical" android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" >
+	
+	    
+
+		
+	    	<TextView 
+	    	    android:text="@string/classification" 
+	    	    android:layout_width="fill_parent"
+	    	    android:layout_height="wrap_content"
+	    	    android:gravity="center"
+	    	    android:background="@drawable/border"
+	    	    android:shadowRadius="0"
+	    	    android:textColor="@color/color_white"
+	    	    android:textSize="20dp"
+	    	    android:id="@+id/tvClassification"
+	    	    android:layout_marginBottom="5dp"
+	    	    />
+	    	
+	    <LinearLayout 
+		android:orientation="vertical" android:layout_width="fill_parent"  android:padding="5dp"
+		android:layout_height="wrap_content" android:id="@+id/layout_classification">
+			    	
+			<AutoCompleteTextView
+				android:id="@+id/inputNom"
+				android:inputType="textCapSentences"
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content" 
+				android:hint="@string/nom" />
+	
+			<AutoCompleteTextView 
+				android:id="@+id/inputAppellation"
+				android:inputType="textCapSentences"
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:hint="@string/appellation" />
+			
+			
+	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3" android:gravity="center" >
+			<Spinner 
+		        android:id="@+id/spinner"
+		        android:layout_width="0dp" android:layout_weight="1.8"
+		        android:layout_height="wrap_content"
+		        android:prompt="@string/colour_prompt" />
+			<EditText 
+				android:id="@+id/inputMillesime" 
+				android:inputType="number"
+				android:layout_width="0dp" android:layout_weight="1.2"
+				android:layout_height="wrap_content" 
+				android:hint="@string/millesime" />
+	</LinearLayout>
+	
+	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2" android:gravity="center" android:id="@+id/layoutPictureButtons" >
+		<Button 
+		    android:id="@+id/buttonPicture"
+		    android:layout_width="0dp" android:layout_weight="1"
+		    android:layout_height="wrap_content"
+		    android:layout_marginRight="5dp"
+		    android:background="@drawable/selector_picture"
+		/>
+		<Button 
+		    android:id="@+id/buttonPictureLoad"
+		    android:layout_marginLeft="5dp"
+		    android:layout_width="0dp" android:layout_weight="1"
+		    android:layout_height="wrap_content"
+		    
+		    android:background="@drawable/selector_open"
+		/>
+	</LinearLayout>
+		<ImageView
+	    android:id="@+id/viewPicture"
+	    android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:scaleType="fitCenter"
+    	android:adjustViewBounds="true"
+	/>
+	</LinearLayout>
+
+	
+
+	
+	
+	
+	
+
+		    	<TextView 
+		    	    android:layout_marginTop="30dp" 
+	    	    android:text="@string/cave_mgt"
+	    	    android:id="@+id/labelCellarMgt"
+	    	    android:layout_width="fill_parent"
+	    	    android:layout_height="wrap_content"
+	    	    android:background="@drawable/border"
+	    	    android:shadowRadius="0"
+	    	    android:textColor="@color/color_white"
+	    	    android:gravity="center"
+	    	    android:layout_marginBottom="5dp"
+	    	    android:textSize="20dp"
+	    	    />
+	<LinearLayout 
+		android:orientation="vertical" android:layout_width="fill_parent"  android:padding="5dp"
+		android:layout_height="wrap_content" android:id="@+id/layout_cave_mgt" >
+	<LinearLayout android:id="@+id/layoutAging" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1" >
+			<EditText 
+					android:id="@+id/inputGarde"
+					android:inputType="number"
+					android:layout_width="135dp"
+					android:lines="2"
+					android:layout_height="wrap_content"
+					android:hint="@string/aging_potential" />
+			<TextView
+				android:text="@string/years" 
+				android:paddingLeft="5dp"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"/>
+		</LinearLayout>	
+		
+	<LinearLayout android:id="@+id/layoutStock" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" >
+			<EditText 
+			android:id="@+id/inputStock"
+			android:inputType="number"
+			android:layout_width="135dp"
+			android:hint="@string/hint_stock"
+			android:layout_height="wrap_content" 
+			 />
+	    <TextView android:layout_height="fill_parent" android:layout_width="wrap_content" android:paddingLeft="5dp"
+	        android:text="@string/stock" android:gravity="center"/>
+	    
+	    <TextView android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+
+			
+		<Button android:layout_height="wrap_content" android:layout_width="wrap_content"  android:id="@+id/stockDecrease" android:background="@drawable/selector_remove_bottle" />
+		<Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/stockIncrease" android:background="@drawable/selector_add_bottle"/>
+	</LinearLayout>
+	
+	<LinearLayout android:id="@+id/layoutLocation" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" >
+		<TextView android:layout_height="fill_parent" android:layout_width="0dp" android:layout_weight="1" android:paddingLeft="5dp" android:id="@+id/labelLocation" android:gravity="center_vertical"/>
+		<Button android:layout_height="wrap_content" android:layout_width="wrap_content"  android:id="@+id/selectLocation" android:background="@drawable/selector_location" />
+	</LinearLayout>
+	
+	<LinearLayout android:id="@+id/layoutPosPrice" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1" >
+		<AutoCompleteTextView 
+			android:id="@+id/inputPointOfSale"
+			android:inputType="textCapSentences"
+			android:layout_width="0dp" android:layout_weight="0.75"
+			android:layout_height="wrap_content" 
+			android:hint="@string/point_of_sale" />
+				
+		<EditText 
+			android:id="@+id/inputPrix"
+			android:inputType="numberDecimal"
+			android:layout_width="0dp" android:layout_weight="0.25"
+			android:layout_height="fill_parent" 
+			android:hint="@string/prix" />
+		<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/currency" android:gravity="left"/>
+	</LinearLayout>
+	<CheckBox android:id="@+id/checkboxBuyAgain" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/buyAgainLabel" />
+	</LinearLayout>
+	
+			
+
+					    	<TextView 
+	    	    android:text="@string/assessment" 
+	    	    android:layout_width="fill_parent"
+	    	    android:layout_height="wrap_content"
+	    	    android:gravity="center"
+	    	    android:background="@drawable/border"
+	    	    android:id="@+id/tvAssessment"
+	    	    android:shadowRadius="0"
+	    	    android:textColor="@color/color_white"
+	    	    android:layout_marginBottom="5dp"
+	    	    android:layout_marginTop="30dp"
+	    	    android:textSize="20dp"
+	    	    />			
+	  	<LinearLayout 
+		android:orientation="vertical" android:layout_width="fill_parent" android:padding="5dp"
+		android:layout_height="wrap_content" android:id="@+id/layout_assessment" >	
+			<MultiAutoCompleteTextView  
+			    
+				android:id="@+id/inputCepage"
+				android:inputType="textCapSentences"
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:hint="@string/cepage" />
+				
+			
+						<EditText 
+						    
+				android:id="@+id/inputDescription"
+				android:inputType="textCapSentences|textMultiLine"
+				android:lines="4"
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:hint="@string/description" />
+						
+						
+			<MultiAutoCompleteTextView 
+			    
+				android:id="@+id/inputAccords"
+				android:inputType="textCapSentences|textMultiLine"
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:hint="@string/accords" />
+				
+				
+
+	
+			<RatingBar 
+			    
+				android:id="@+id/input_note"
+				android:progressDrawable="@drawable/red_rating_bar_glasses"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:numStars="10"
+		        android:stepSize="1"/>
+		    </LinearLayout>   
+			
+			
+	</LinearLayout>
+	</ScrollView>
+	
+	<Button
+		    	android:id="@+id/addButton"
+		    	android:layout_marginTop="10dp"
+		    	android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/selector_ok"
+		         />
+	
+	    <Button
+		    	android:id="@+id/editButton"
+		    	android:layout_marginTop="10dp"
+		    	android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/selector_ok" />
+	
+</LinearLayout>
+</RelativeLayout>
